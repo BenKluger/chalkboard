@@ -4,9 +4,15 @@
 
 ## Wireframe
 
-- Ben:
+- Ben
+###### Desktop:
 
-- Amna:
+###### Mobile:
+
+- Amna
+###### Desktop:
+
+###### Mobile:
 
 ## Sitemap
 

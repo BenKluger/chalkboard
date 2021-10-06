@@ -4,7 +4,7 @@
 
 ## Wireframe
 
-###### Desktop:
+###### Desktop: ![image](https://user-images.githubusercontent.com/69221395/136123911-8f98deee-92cc-4fdb-907d-9c39a003b07d.png) v1
 
 ###### Mobile:
 
@@ -66,3 +66,6 @@ My Courses page:
 - Prof can see all assignments. Click on an assignment brings you to a page where you have a list of students who have submissions, as well as a tab for a list of all students enrolled in the course, at the bottom there will be a section for students who applied for the course, and you can hit approve or reject for those students. The main tab (Submissions Tab) you can see a list of students who have submissions. Clicking that brings you to a new page that shows the submission (from a given student, whether draft or full submission, and there will be a small title if draft or not). There will be several buttons. One pulls up the answer key associated with the assignment. Each question has two buttons next to it, a check and an x, that the prof can click.  At the bottom of each Assignment Page, there is a Feedback text box as well as a Grade [0/100] Textbox Range. Make a button on the top right of page that Deletes the users submission, and allows them to resubmit.
 
 Footer is always there, and it gives a contact page, which has both Amna’s and Ben’s emails and GitHub links
+
+
+

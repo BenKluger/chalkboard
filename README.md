@@ -23,7 +23,7 @@ Similar to the Desktop Wireframe, just with resized windows
 ## What we learned while making the Sitemap/Wireframe
 
 - Ben: 
-- I learned how to design a website from the ground up - how the linking structure works (sitemap), and how to represent the example user view with a wireframe. Amna and I created the basic functionality/structure of our website in the "Other Information" section below, then worked on the sitemap and wireframe together. I drew the sitemap and Student's view for the wireframe, Amna drew the Instructor's and Admin's view in the wireframe.
+  - I learned how to design a website from the ground up - how the linking structure works (sitemap), and how to represent the example user view with a wireframe. Amna and I created the basic functionality/structure of our website in the "Other Information" section below, then worked on the sitemap and wireframe together. I drew the sitemap and Student's view for the wireframe, Amna drew the Instructor's and Admin's view in the wireframe.
 
 - Amna:
 

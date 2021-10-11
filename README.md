@@ -7,13 +7,13 @@
 ###### Desktop: 
 Student's View Wireframe: ![image](https://user-images.githubusercontent.com/69221395/136123911-8f98deee-92cc-4fdb-907d-9c39a003b07d.png) 
 
-Instructor's View Wireframe: ![image](https://user-images.githubusercontent.com/69221395/136679790-f29e5c3e-1efb-447e-a8f7-24d5bf77d350.png)
+Instructor's View Wireframe: ![image](https://user-images.githubusercontent.com/69221395/136847799-ae5ff18a-c17f-4b45-ae96-dd5b75e46383.png)
 
 Administrator's View Wireframe: ![image](https://user-images.githubusercontent.com/69221395/136679780-b61783c6-9f8d-48e7-a119-d9a6da3ff7c0.png)
 
 
 
-###### Mobile:
+###### Mobile: Similar to the Desktop Wireframe, just with resized windows
 
 ## Sitemap
 

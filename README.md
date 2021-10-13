@@ -5,6 +5,9 @@
 ## Wireframe
 
 ###### Desktop: 
+
+A "Sign up" page was not included in the wireframe, but will be included in the actual website.
+
 Student's View Wireframe: ![image](https://user-images.githubusercontent.com/69221395/136123911-8f98deee-92cc-4fdb-907d-9c39a003b07d.png) 
 
 Instructor's View Wireframe: ![image](https://user-images.githubusercontent.com/69221395/136847799-ae5ff18a-c17f-4b45-ae96-dd5b75e46383.png)

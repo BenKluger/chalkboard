@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <!-- <form>
+        <input placeholder="Enter Username" required>
+        <input placeholder="Enter Password" required>
+        <input type="radio" name="User">
+        <label>Student</label>
+        <input type="radio" name="User">
+        <label>Instructor</label>
+        <input type="radio" name="User">
+        <label>Admin</label>
+    </form> -->
+
+    <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+    
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+
+        <div id = "userType">
+            <input type="radio" name="User">
+            <label>Student</label>
+            <input type="radio" name="User">
+            <label>Instructor</label>
+            <input type="radio" name="User">
+            <label>Admin</label>
+        </div>
+        
+        <button type="submit">GENERIC Login</button> <!--This button will incorporate with the radio buttons eventually.-->
+        <button type="submit" ><a href ="register.html">Register</a></button>
+
+        <button type="submit">Student Login</button>
+        <button type="submit"><a href="instructorDB.html">Instructor Login</a></button>
+        <button type="submit">Admin Login</button>
+        
+
+        <!-- <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label> -->
+      </div>
+
+      <footer>
+        <img src="images/profile.png" style="float:left" width = 17%>
+        <p>Amna Amen: amna.amen14@qmail.cuny.edu </p>
+        <p>Ben Kluger: benjamin.kluger98@qmail.cuny.edu</p>
+    </footer>
+
+</body>
+</html>

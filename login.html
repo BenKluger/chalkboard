@@ -25,13 +25,18 @@
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" required>
 
+
+        
+
         <div id = "userType">
-            <input type="radio" name="User">
-            <label>Student</label>
-            <input type="radio" name="User">
-            <label>Instructor</label>
-            <input type="radio" name="User">
-            <label>Admin</label>
+            <input type="radio" id="student" name="User">
+            <label for="student">Student</label>
+
+            <input type="radio" id="instructor" name="User">
+            <label for="instructor">Instructor</label>
+
+            <input type="radio" id="admin" name="User">                       
+            <label for="admin">Admin</label>           
         </div>
         
         <button type="submit">GENERIC Login</button> <!--This button will incorporate with the radio buttons eventually.-->
@@ -48,7 +53,7 @@
       </div>
 
       <footer>
-        <img src="images/profile.png" style="float:left" width = 17%>
+        <img src="img/profile.png" style="float:left" width = 17%>
         <p>Amna Amen: amna.amen14@qmail.cuny.edu </p>
         <p>Ben Kluger: benjamin.kluger98@qmail.cuny.edu</p>
     </footer>

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submissiobns Dashboard</title>
+    <title>Student X Submission</title>
 
     <link rel="stylesheet" type="text/css" media="screen"
       href="css/generalStyles.css">
-    <script src="js/generalScripts.js" type="text/javascript" defer></script>
+    <script src="js/sliderScript.js" type="text/javascript" defer></script>
 
 </head>
 <body>
@@ -25,33 +25,44 @@
         <button class="tablinks" onclick="openCity(event, 'Create a Course')"><a href = "createCourse.html"><h3>Create a Course</h3></a></button>
     </div>
       
+      <h1>CS 220 Assignment</h1>
+      <h2>Solve This Algorithm</h2>
+      <h2>Kason Mendoza's Submission</h2>
 
-    <h1>CS 220 Assignment</h1>
-    <h2>Solve This Algorithm</h2>
+      <button>Allow Resubmit</button>
+      <button>Answer Key</button>
 
-    <h3>Submissions:</h3>
-    <table>
-        <tr>
-            <th>Student Name</th>
-            <th>Status</th>
-          </tr>
-          <tr>
-            <td><a href="studentXsubmission.html">Kason Mendoza</a></td>
-            <td>MISSING</td>
-          </tr>
-          <tr>
-            <td>Aisha Harrell</td>
-            <td>SUBMITTED</td>
-          </tr>
-          <tr>
-            <td>Daniela Rice</td>
-            <td>MISSING</td>
-          </tr>
-          <tr>
-            <td>...</td>
-            <td>MISSING</td>
-          </tr>
-    </table>
+      <h3>Question 1: What the dog do?</h3>
+      <p>It bark.</p>
+      <button>&#x2713;</button>
+      <button>&#x2717;</button>
+
+      <h3>What is Dijkstra's algorithm used for?</h3>
+      <p>Shortest path</p>
+      <button>&#x2713;</button>
+      <button>&#x2717;</button>
+
+      <h3>Solving what problem would instantly make you a millionaire?</h3>
+      <p>P = NP?</p>
+      <button>&#x2713;</button>
+      <button>&#x2717;</button>
+
+
+      <div class="slider">
+        <p class = "grade">Grade</p>
+        <input type="range" min="0" max="100" value="10" oninput="rangeValue.innerText = this.value">
+        <p id="rangeValue">10</p>
+      </div>
+
+      <form>
+        <br><label for="feedback">Professor's Feedback:</label><br>
+        <textarea name="feedback" id="feedback" rows="10" cols="50" placeholder="How did the student do?"></textarea>
+      </form>
+
+
+
+
+
 
 
 

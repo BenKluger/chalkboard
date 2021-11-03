@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses Database</title>
+
+    <link rel="stylesheet" type="text/css" media="screen"
+      href="../css/generalStyles.css">
+    <script src="../js/generalScripts.js" type="text/javascript" defer></script>
+
+</head>
+<body>
+    <!-- This is the header -->
+    <header> 
+        <a href="adminHomePage.html" class = "header"><img src="../img/cover.png" width = 17%></a>
+        <button><a href="../login.html" class = "header">Sign Out</a></button>
+    </header>
+    <!-- This is the side tab -->
+    <div class="tab" style="float: left;" >
+        <button class="tablinks" onclick="openCity(event, 'Instructors')"><a href = "instructorsDB.html"><h3>Instructors</h3></a></button>
+        <button class="tablinks" onclick="openCity(event, 'Students')"><a href = "studentsDB.html"><h3>Students</h3></a></button>
+        <button class="tablinks" onclick="openCity(event, 'Courses')"><a href = "coursesDB.html"><h3>Courses</h3></a></button>
+    </div>
+    <!--Courses Data Base -->
+    <h2>Offered Courses</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Enrolled Students</th>
+            <th>Credits</th>
+            <th>Department</th>
+        </tr>
+        <tr>
+            <td>Intro to Poetry</td>
+            <td>112</td>
+            <td>24</td>
+            <td>3</td>
+            <td>English</td>
+        </tr>
+        <tr>
+            <td>Intro to Biology</td>
+            <td>160</td>
+            <td>30</td>
+            <td>4</td>
+            <td>Biology</td>
+        </tr>
+        <tr>
+            <td>OOP in C++</td>
+            <td>111</td>
+            <td>35</td>
+            <td>3</td>
+            <td>Computer Science</td>
+        </tr>
+        <tr>
+            <td>Intro to Linuistics</td>
+            <td>120</td>
+            <td>18</td>
+            <td>3</td>
+            <td>Linguistics</td>
+        </tr>
+        <tr>
+            <td>Advanced Calculus</td>
+            <td>201</td>
+            <td>22</td>
+            <td>4</td>
+            <td>Mathematics</td>
+        </tr>
+        <tr>
+            <td>Intro to Psychology</td>
+            <td>101</td>
+            <td>32</td>
+            <td>3</td>
+            <td>Psychology</td>
+        </tr>
+    </table>
+    <button><a href="adminHomePage.html">Dashboard</a></button>
+    <!-- This is the footer -->
+    <footer style="float: left;">
+        <img src="../img/profile.png" style="float:left" width = 17%>
+        <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
+        <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
+    </footer>
+</body>
+
+</html>

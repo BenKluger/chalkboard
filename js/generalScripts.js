@@ -19,3 +19,14 @@ function openCity(evt, cityName) {
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+
+$(document).ready(function () {
+  $('#sidebarCollapse').on('click', function () {
+      $('#sidebar').toggleClass('active');
+      $('.logo').toggleClass('active');
+  });
+  $('#sidebarCollapse').on('click', function showImage(){
+      $(".logo").toggle();
+  });
+});

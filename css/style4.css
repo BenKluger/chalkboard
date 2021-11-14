@@ -75,9 +75,9 @@ span {
 }
 
 .btn:hover, .btn-info:hover{
-    background-color: #5C7641;
+    /* background-color: #5C7641; */
     border-color: #5C7641;
-    box-shadow: 0 0 0 0.2em #89AB67;
+    box-shadow: 0 0 0 0.3em #89AB67;
 }
 .btn-info:focus{
     border-color: #5C7641;
@@ -90,6 +90,13 @@ span {
     margin-top: 10px;
 }
 
+.login img{
+    width: 30%;
+}
+.login{
+    align-content: center;
+    justify-content: space-between;
+}
 
 
 

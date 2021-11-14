@@ -102,6 +102,17 @@ span {
     color: #F3F3EF;
 }
 
+button a:hover{
+    color: #2A2F1F;
+}
+.fw-bold{
+    color: #f3f3ef;
+}
+
+footer p{
+    color: #925E69;
+}
+
 
 
 

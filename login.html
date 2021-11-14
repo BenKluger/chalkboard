@@ -1,59 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <title>Login</title>
-</head>
-<body>
-    <!-- <form>
-        <input placeholder="Enter Username" required>
-        <input placeholder="Enter Password" required>
-        <input type="radio" name="User">
-        <label>Student</label>
-        <input type="radio" name="User">
-        <label>Instructor</label>
-        <input type="radio" name="User">
-        <label>Admin</label>
-    </form> -->
 
-    <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+    <!-- Bootstrap CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+      crossorigin="anonymous"
+    />
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../css/style4.css" />
+
+    <!-- Font Awesome JS -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+      integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+      integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Our Custom JavaScript -->
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Popper.JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+      integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+      integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+            <div class="container py-5">
+              <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card-body p-5 text-center rounded login">
+                        <img src="img/cover.png" alt="Logo" class="rounded mx-auto d-block">
+          
+                      <div class="mb-md-4 mt-md-2 ">
+          
+                        <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                        <p class="text-white-50 mb-5">Please enter your login and password!</p>
+          
+                        <div class="form-outline form-white mb-4">
+                            <label for="uname" class="form-label">Username</label>
+                            <input type="text" class="form-control form-control-lg" id="uname" placeholder="Username" required>
+                        </div>
+          
+                        <div class="form-outline form-white mb-4">
+                            <label for="passw" class="form-label">Password</label>
+                            <input type="password" id="passw" class="form-control form-control-lg" placeholder="Password" required>
+                        </div>
+                        <div id = "userType">
+                            <input type="radio" id="student" name="User">
+                            <label for="student">Student</label>
+                
+                            <input type="radio" id="instructor" name="User">
+                            <label for="instructor">Instructor</label>
+                
+                            <input type="radio" id="admin" name="User">                       
+                            <label for="admin">Admin</label>           
+                        </div>
+          
+                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button><!--This button will incorporate with the radio buttons eventually.-->
+                        <br>
     
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-
-        <div id = "userType">
-            <input type="radio" id="student" name="User">
-            <label for="student">Student</label>
-
-            <input type="radio" id="instructor" name="User">
-            <label for="instructor">Instructor</label>
-
-            <input type="radio" id="admin" name="User">                       
-            <label for="admin">Admin</label>           
-        </div>
+                        <button type="submit" class="btn" ><a href="Student/studentHomePage.html">Student Login</a></button>
+                        <button type="submit" class="btn"><a href="Instructor/instructorHomePage.html">Instructor Login</a></button>
+                        <button type="submit" class="btn"><a href="Admin/adminHomePage.html">Admin Login</a></button>
+          
+                      </div>
+                      <div>
+                        <p class="">Don't have an account? <a href="register.html" class=" fw-bold">Sign Up</a></p>
+                      </div>
+          
+                    </div>
+                  </div>
+                
+              </div>
+              <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <img src="../img/profile.png" alt="logo">
+                        </div>
+                        <div class="col">
+                          <img src="../img/hspic.png" alt="headshot picture">
+                        </div>
+                        <div class="col-4">
+                          <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
+                        </div>
+                        <div class="col">
+                            <img src="../img/hspic.png" alt="headshot picture"> 
+                        </div>
+                        <div class="col-4">
+                            <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
+                        </div>
         
-        <button type="submit">GENERIC Login</button> <!--This button will incorporate with the radio buttons eventually.-->
-        <button type="submit" ><a href ="register.html">Register</a></button>
-
-        <button type="submit"><a href="Student/studentHomePage.html">Student Login</a></button>
-        <button type="submit"><a href="Instructor/instructorHomePage.html">Instructor Login</a></button>
-        <button type="submit"><a href="Admin/adminHomePage.html">Admin Login</a></button>
+                    </div>
         
+                </div>
+        
+            </footer>
+            </div>
+          
 
-        <!-- <label>
-          <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label> -->
+
+        
       </div>
 
-      <footer>
-        <img src="img/profile.png" style="float:left" width = 17%>
-        <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
-        <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
-    </footer>
-
-</body>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script>
+  </body>
 </html>

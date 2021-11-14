@@ -97,6 +97,10 @@ span {
     align-content: center;
     justify-content: space-between;
 }
+.card-body{
+    background-color: #2A2F1F;
+    color: #F3F3EF;
+}
 
 
 

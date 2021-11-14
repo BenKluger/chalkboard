@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>Start Page</title>
+    <title>Login</title>
 
     <!-- Bootstrap CSS CDN -->
     <link
@@ -54,45 +54,82 @@
 
   <body>
     <div class="wrapper">
-
-      <!-- Page Content  -->
-      <div id="content">
-        <div class=" align-items-center login text-center">
-            <img src="img/cover.png" alt="Logo" class="rounded mx-auto d-block">
-            <h1>ChalkBoard</h1>
-            <h4>Amna Amen & Ben Kluger</h4><br>
-            <button class="btn">
-            <a href="login.html">Link to sign in page</a>
-            </button>
-            <br><br>
-            <h4>A Blackboard copy by Amna and Ben!</h4>
-        </div>
-
-
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <img src="../img/profile.png" alt="logo">
-                    </div>
-                    <div class="col">
-                      <img src="../img/hspic.png" alt="headshot picture">
-                    </div>
-                    <div class="col-4">
-                      <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
-                    </div>
-                    <div class="col">
-                        <img src="../img/hspic.png" alt="headshot picture"> 
-                    </div>
-                    <div class="col-4">
-                        <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
-                    </div>
+            <div class="container py-5">
+              <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card-body p-5 text-center rounded login">
+                        <img src="img/cover.png" alt="Logo" class="rounded mx-auto d-block">
+          
+                      <div class="mb-md-4 mt-md-2 ">
+          
+                        <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                        <p class="text-white-50 mb-5">Please enter your login and password!</p>
+          
+                        <div class="form-outline form-white mb-4">
+                            <label for="uname" class="form-label">Username</label>
+                            <input type="text" class="form-control form-control-lg" id="uname" placeholder="Username" required>
+                        </div>
+          
+                        <div class="form-outline form-white mb-4">
+                            <label for="passw" class="form-label">Password</label>
+                            <input type="password" id="passw" class="form-control form-control-lg" placeholder="Password" required>
+                        </div>
+                        <div id = "userType">
+                            <input type="radio" id="student" name="User">
+                            <label for="student">Student</label>
+                
+                            <input type="radio" id="instructor" name="User">
+                            <label for="instructor">Instructor</label>
+                
+                            <input type="radio" id="admin" name="User">                       
+                            <label for="admin">Admin</label>           
+                        </div>
+          
+                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button><!--This button will incorporate with the radio buttons eventually.-->
+                        <br>
     
+                        <button type="submit" class="btn" ><a href="Student/studentHomePage.html">Student Login</a></button>
+                        <button type="submit" class="btn"><a href="Instructor/instructorHomePage.html">Instructor Login</a></button>
+                        <button type="submit" class="btn"><a href="Admin/adminHomePage.html">Admin Login</a></button>
+          
+                      </div>
+                      <div>
+                        <p class="">Don't have an account? <a href="register.html" class=" fw-bold">Sign Up</a></p>
+                      </div>
+          
+                    </div>
+                  </div>
+                
+              </div>
+              <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <img src="../img/profile.png" alt="logo">
+                        </div>
+                        <div class="col">
+                          <img src="../img/hspic.png" alt="headshot picture">
+                        </div>
+                        <div class="col-4">
+                          <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
+                        </div>
+                        <div class="col">
+                            <img src="../img/hspic.png" alt="headshot picture"> 
+                        </div>
+                        <div class="col-4">
+                            <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
+                        </div>
+        
+                    </div>
+        
                 </div>
-    
+        
+            </footer>
             </div>
-    
-        </footer>
+          
+
+
+        
       </div>
 
     </div>

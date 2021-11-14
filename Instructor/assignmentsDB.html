@@ -1,51 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignments Dashboard</title>
-    <link rel="stylesheet" type="text/css" media="screen"
-      href="../css/generalStyles.css">
-    <script src="../js/generalScripts.js" type="text/javascript" defer></script>
-</head>
-<body>
-    <!-- This is the header -->
-    <header> 
-        <a href="instructorHomePage.html" class = "header"><img src="../img/cover.png" width = 17%></a>
-        <button><a href="../login.html" class = "header">Sign Out</a></button>
-    </header>
-    <!-- This is the side tab -->
-    <div class="tab" style="float: left;" >
-        <button class="tablinks" onclick="openCity(event, 'My Courses')"><a href = "instructorHomePage.html"><h3>My Courses</h3></a></button>
-        <button class="tablinks" onclick="openCity(event, 'Available Courses')"><a href = "availCourses.html"><h3>Available Courses</h3></a></button>
-        <button class="tablinks" onclick="openCity(event, 'Create a Course')"><a href = "createCourse.html"><h3>Create a Course</h3></a></button>
-    </div>
-    <h1>CSCI 220 Assignments</h1>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Due Date</th>
-          </tr>
-          <tr>
-            <td><a href="algorithmAssignment.html">Solve this algorithm</a></td>
-            <td>11/30/2021</td>
-          </tr>
-          <tr>
-            <td>Solve this recurrence</td>
-            <td>12/05/2021</td>
-          </tr>
-          <tr>
-            <td>Solve this relation</td>
-            <td>12/10/2021</td>
-          </tr>
-    </table>
-    <!-- This is the footer -->
-    <footer style="float: left;">
-        <img src="../img/profile.png" style="float:left" width = 17%>
-        <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
-        <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
-    </footer>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
+    <title>Assignments Dashboard</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+      crossorigin="anonymous"
+    />
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../css/style4.css" />
+
+    <!-- Font Awesome JS -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+      integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+      integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Our Custom JavaScript -->
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Popper.JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+      integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+      integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <a href="instructorHomePage.html"
+            ><img src="../img/cover.png" width="200px;" class="logo"
+          /></a>
+          <a href="instructorHomePage.html"><strong>AB</strong></a>
+        </div>
+
+        <ul class="list-unstyled components">
+          <li class="active">
+            <a href="instructorHomePage.html"
+              ><i class="fas fa-home"></i> My Courses</a
+            >
+          </li>
+          <li>
+            <a href="availCourses.html"
+              ><i class="fas fa-briefcase"></i> Available Courses</a
+            >
+          </li>
+          <li>
+            <a href="createCourse.html"
+              ><i class="fas fa-copy"></i> Create a Course</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Page Content  -->
+      <div id="content">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span></span>
+                    </button>
+
+                    <button
+                    class="btn btn-dark d-inline-block d-lg-none ml-auto"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    >
+                    <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-info">
+                    <a href="../login.html">Sign Out</a>
+                    </button>
+                </div>
+            </nav>
+
+            <h1>CSCI 220 Assignments</h1>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Due Date</th>
+                </tr>
+                <tr>
+                    <td><a href="algorithmAssignment.html">Solve this algorithm</a></td>
+                    <td>11/30/2021</td>
+                </tr>
+                <tr>
+                    <td>Solve this recurrence</td>
+                    <td>12/05/2021</td>
+                </tr>
+                <tr>
+                    <td>Solve this relation</td>
+                    <td>12/10/2021</td>
+                </tr>
+            </table>
+
+
+
+        </div>
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <img src="../img/profile.png" alt="logo">
+                    </div>
+                    <div class="col">
+                      <img src="../img/hspic.png" alt="headshot picture">
+                    </div>
+                    <div class="col-4">
+                      <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
+                    </div>
+                    <div class="col">
+                        <img src="../img/hspic.png" alt="headshot picture"> 
+                    </div>
+                    <div class="col-4">
+                        <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </footer>
+      </div>
+
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script>
+  </body>
 </html>

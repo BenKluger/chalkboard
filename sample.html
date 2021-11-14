@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>Login</title>
+    <title>Students Database</title>
 
     <!-- Bootstrap CSS CDN -->
     <link
@@ -54,85 +54,148 @@
 
   <body>
     <div class="wrapper">
-            <div class="container py-5">
-              <div class="row justify-content-center align-items-center">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card-body p-5 text-center rounded login">
-                        <img src="img/cover.png" alt="Logo" class="rounded mx-auto d-block">
-          
-                      <div class="mb-md-4 mt-md-2 ">
-          
-                        <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                        <p class="text-white-50 mb-5">Please enter your login and password!</p>
-          
-                        <div class="form-outline form-white mb-4">
-                            <label for="uname" class="form-label">Username</label>
-                            <input type="text" class="form-control form-control-lg" id="uname" placeholder="Username" required>
-                        </div>
-          
-                        <div class="form-outline form-white mb-4">
-                            <label for="passw" class="form-label">Password</label>
-                            <input type="password" id="passw" class="form-control form-control-lg" placeholder="Password" required>
-                        </div>
-                        <div id = "userType">
-                            <input type="radio" id="student" name="User">
-                            <label for="student">Student</label>
-                
-                            <input type="radio" id="instructor" name="User">
-                            <label for="instructor">Instructor</label>
-                
-                            <input type="radio" id="admin" name="User">                       
-                            <label for="admin">Admin</label>           
-                        </div>
-          
-                        <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button><!--This button will incorporate with the radio buttons eventually.-->
-                        <br>
-    
-                        <button type="submit" class="btn" ><a href="Student/studentHomePage.html">Student Login</a></button>
-                        <button type="submit" class="btn"><a href="Instructor/instructorHomePage.html">Instructor Login</a></button>
-                        <button type="submit" class="btn"><a href="Admin/adminHomePage.html">Admin Login</a></button>
-          
-                      </div>
-                      <div>
-                        <p class="">Don't have an account? <a href="register.html" class=" fw-bold">Sign Up</a></p>
-                      </div>
-          
-                    </div>
-                  </div>
-                
-              </div>
-              <footer class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <img src="../img/profile.png" alt="logo">
-                        </div>
-                        <div class="col">
-                          <img src="../img/hspic.png" alt="headshot picture">
-                        </div>
-                        <div class="col-4">
-                          <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
-                        </div>
-                        <div class="col">
-                            <img src="../img/hspic.png" alt="headshot picture"> 
-                        </div>
-                        <div class="col-4">
-                            <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
-                        </div>
-        
-                    </div>
-        
+      <!-- Sidebar  -->
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <a href="adminHomePage.html"
+            ><img src="../img/cover.png" width="200px;" class="logo"
+          /></a>
+          <a href="adminHomePage.html"><strong>AB</strong></a>
+        </div>
+
+        <ul class="list-unstyled components">
+          <li class="active">
+            <a href="instructorsDB.html"
+              ><i class="fas fa-chalkboard-teacher"></i> Instructors</a
+            >
+          </li>
+          <li>
+            <a href="studentsDB.html"
+              ><i class="fas fa-user-friends"></i> Students</a
+            >
+          </li>
+          <li>
+            <a href="coursesDB.html"
+              ><i class="fas fa-copy"></i> Courses</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-bars"></i>
+                    <span></span>
+                    </button>
+
+                    <button
+                    class="btn btn-dark d-inline-block d-lg-none ml-auto"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    >
+                    <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-info">
+                    <a href="../login.html">Sign Out</a>
+                    </button>
                 </div>
-        
-            </footer>
+            </nav>
+
+            <h2 class="text-center">Students Database</h2>
+            <table class="table table-hover">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>ID #</th>
+                    <th>Status</th>
+                    <th>GPA</th>
+                </tr>
+                <tr>
+                    <td>Keith</td>
+                    <td>Turner</td>
+                    <td>2154987362</td>
+                    <td>Enrolled</td>
+                    <td>3.2/4.0</td>
+                </tr>
+                <tr>
+                    <td>Tracey</td>
+                    <td>Langdon</td>
+                    <td>3154687264</td>
+                    <td>Graduated</td>
+                    <td>2.8/4.0</td>
+                </tr>
+                <tr>
+                    <td>Theresa</td>
+                    <td>Buckland</td>
+                    <td>12468795324</td>
+                    <td>Enrolled</td>
+                    <td>3.1/4.0</td>
+                </tr>
+                <tr>
+                    <td>Connor</td>
+                    <td>Wilkins</td>
+                    <td>1468759324</td>
+                    <td>Graduated</td>
+                    <td>2.9/4.0</td>
+                </tr>
+                <tr>
+                    <td>Hannah</td>
+                    <td>Lyman</td>
+                    <td>2154946792</td>
+                    <td>Enrolled</td>
+                    <td>3.8/4.0</td>
+                </tr>
+                <tr>
+                    <td>Isaac</td>
+                    <td>Walker</td>
+                    <td>4675987264</td>
+                    <td>Graduated</td>
+                    <td>3.5/4.0</td>
+                </tr>
+            </table>
+            <a href="adminHomePage.html"><button class="btn float-right">Dashboard</button></a>
+
+
+        </div>
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <img src="../img/profile.png" alt="logo">
+                    </div>
+                    <div class="col">
+                      <img src="../img/hspic.png" alt="headshot picture">
+                    </div>
+                    <div class="col-4">
+                      <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
+                    </div>
+                    <div class="col">
+                        <img src="../img/hspic.png" alt="headshot picture"> 
+                    </div>
+                    <div class="col-4">
+                        <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
+                    </div>
+    
+                </div>
+    
             </div>
-          
-
-
-        
+    
+        </footer>
       </div>
 
     </div>
+
     <script type="text/javascript">
       $(document).ready(function () {
         $("#sidebarCollapse").on("click", function () {

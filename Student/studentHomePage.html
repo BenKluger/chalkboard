@@ -1,35 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <title>Student Home Page</title>
-    <link rel="stylesheet" type="text/css" media="screen"
-      href="../css/generalStyles.css">
-    <script src="../js/generalScripts.js" type="text/javascript" defer></script>
-</head>
-<body>
-    <!-- This is the header -->
-    <header> 
-        <a href="studentHomePage.html" class = "header"><img src="../img/cover.png" width = 17%></a>
-        <button><a href="../login.html" class = "header">Sign Out</a></button>
-    </header>
-    <!-- This is the side tab -->
-    <div class="tab" style="float: left;" >
-        <button class="tablinks" onclick="openCity(event, 'My Courses')"><a href = "studentHomePage.html"><h3>My Courses</h3></a></button>
-        <button class="tablinks" onclick="openCity(event, 'Available Courses')"><a href = "availCoursesST.html"><h3>Available Courses</h3></a></button>
+
+    <!-- Bootstrap CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+      crossorigin="anonymous"
+    />
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../css/style4.css" />
+
+    <!-- Font Awesome JS -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+      integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+      integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Our Custom JavaScript -->
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Popper.JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+      integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap JS -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+      integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <a href="studentHomePage.html"
+            ><img src="../img/cover.png" width="200px;" class="logo rounded"
+          /></a>
+          <a href="studentHomePage.html"><strong>AB</strong></a>
+        </div>
+
+        <ul class="list-unstyled components">
+          <li class="active">
+            <a href="studentHomePage.html"
+              ><i class="fas fa-home"></i> My Courses</a
+            >
+          </li>
+          <li>
+            <a href="availCoursesST.html"
+              ><i class="fas fa-briefcase"></i> Available Courses</a
+              >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div class="dontTest">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-bars"></i>
+                    <span></span>
+                    </button>
+
+                    
+
+                    <button type="button" class="btn btn-info">
+                    <a href="../login.html">Sign Out</a>
+                    </button>
+                </div>
+            </nav>
+
+            <!-- THIS IS WHERE THE SAMPLE STARTS! -->
+
+            <div class = "contentMargin">
+              <h2>My Courses</h2>
+              <div class="line"></div>
+              <!-- This gives the list of courses that the student is enrolled in. -->
+              <a href="cs220DBstudent.html">CSCI 220 - Discrete Structures</a>
+              <div class="line"></div>
+              <a href="#">CSCI 323 - Design & Analysis Algorithms</a>
+              <div class="line"></div>
+              <a href="#">CSCI 316 - Principles of Programming Languages</a>
+              <div class="line"></div>
+            </div>
+
+
+
+
+            <!-- THIS IS WHERE THE SAMPLE WORK ENDS! -->
+        </div>
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <img src="../img/profile.png" alt="logo">
+                    </div>
+                    <div class="col">
+                      <img src="../img/hspic.png" alt="headshot picture">
+                    </div>
+                    <div class="col-4">
+                      <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
+                    </div>
+                    <div class="col">
+                        <img src="../img/hspic.png" alt="headshot picture"> 
+                    </div>
+                    <div class="col-4">
+                        <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </footer>
+      </div>
+
     </div>
-    <h2>My Courses</h2>
-    <!-- This gives the list of courses that the student is enrolled in. -->
-    <a href="cs220DBstudent.html">CSCI 220 - Discrete Structures</a>
-    <p>CSCI 323 - Design & Analysis Algorithms</p>
-    <p>CSCI 316 - Principles of Programming Languages</p>
-    <!-- This is the footer -->
-    <footer style="float: left;">
-        <img src="../img/profile.png" style="float:left" width = 17%>
-        <p>Amna Amen: <a href="mailto:amna.amen14@qmail.cuny.edu">amna.amen14@qmail.cuny.edu</a></p>
-        <p>Ben Kluger: <a href="mailto:benjamin.kluger98@qmail.cuny.edu">benjamin.kluger98@qmail.cuny.edu</a></p>
-    </footer>
-</body>
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script>
+  </body>
 </html>

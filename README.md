@@ -16,6 +16,7 @@ Small TODO:
 - Confirm links work to proper places
 - Confirm everything follows consistent format of "CSCI" ?
 - Search field + button allignment
+- Make h4's into h3's and find a good size
 - ~~Textbox not aligned with buttons~~
 - ~~Consider adding floating # buttons by each static text "link"~~
 - ~~Make assignments in grades to link to actual assignments?~~

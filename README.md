@@ -3,7 +3,7 @@
 TODO:
 
 - RUN THRU BOTH VALIDATORS
-- ~~Edit sign up page
+- ~~Edit sign up page~~
 - ~~Remove button from sidebar
 - Fix footer collapsable text
 - ~~Remove logo from mini sidebar

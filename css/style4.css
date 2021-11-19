@@ -73,6 +73,7 @@ span {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   margin: 5px;
+  /* margin-left: 0px; */
   color: white;
 }
 
@@ -83,9 +84,7 @@ span {
   box-shadow: 0 0 0 0.3em #89ab67;
 }
 .btn-info:focus {
-  border-color: #5c7641;
   box-shadow: 0 0 0 0.2em #89ab67;
-  background-color: #5c7641;
 }
 
 .btn-info:not(:disabled):not(.disabled).active,
@@ -101,6 +100,10 @@ span {
   width: 35pt;
   margin-top: 10px;
 }
+
+/* .headshot {
+  float: left;
+} */
 
 .login img {
   width: 30%;
@@ -123,6 +126,7 @@ button a:hover {
 
 footer p {
   color: #925e69;
+  /* float: left; */
 }
 
 footer {
@@ -354,5 +358,11 @@ ul.CTAs a {
   }
   #sidebarCollapse span {
     display: none;
+  }
+
+  #sidebar .logo.active {
+    border: 10px solid red;
+    visibility: hidden;
+    width: 0px;
   }
 }

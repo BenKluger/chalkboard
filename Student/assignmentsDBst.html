@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>Available Courses</title>
+    <title>Assignments Dashboard</title>
 
     <!-- Bootstrap CSS CDN -->
     <link
@@ -54,37 +54,32 @@
 
   <body>
     <div class="wrapper">
-      <!-- Sidebar  -->
-      <nav id="sidebar">
+     <!-- Sidebar  -->
+     <nav id="sidebar">
         <div class="sidebar-header">
-          <a href="instructorHomePage.html"
-            ><img src="../img/cover.png" width="200px;" class="logo"
+          <a href="studentHomePage.html"
+            ><img src="../img/cover.png" width="200px;" class="logo rounded"
           /></a>
-          <a href="instructorHomePage.html"><strong>AB</strong></a>
+          <a href="studentHomePage.html"><strong>AB</strong></a>
         </div>
 
         <ul class="list-unstyled components">
           <li class="active">
-            <a href="instructorHomePage.html"
+            <a href="studentHomePage.html"
               ><i class="fas fa-home"></i> My Courses</a
             >
           </li>
           <li>
-            <a href="availCourses.html"
+            <a href="availCoursesST.html"
               ><i class="fas fa-briefcase"></i> Available Courses</a
-            >
-          </li>
-          <li>
-            <a href="createCourse.html"
-              ><i class="fas fa-copy"></i> Create a Course</a
-            >
+              >
           </li>
         </ul>
       </nav>
 
       <!-- Page Content  -->
       <div id="content">
-          <div>
+        <div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <button type="button" id="sidebarCollapse" class="btn btn-info">
@@ -93,44 +88,30 @@
                     </button>
 
                     <a href="../login.html"><button type="button" class="btn btn-info">Sign Out</button></a>
-               
-                  </div>
+                </div>
             </nav>
 
-            <h1>Available Courses</h1>
-            <!-- Search bar. -->
-            <div class="input-group">
-                <div class="form-outline">
-                  <input type="search" id="form1" class="form-control"  placeholder="Search..."/>
-                </div>
-                <button type="button" class="btn btn-primary btn-info">
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
-              
-              <table class = "table table-hover">
-
+            <h1>CSCI 220 Assignments</h1>
+            <table class="table">
                 <tr>
-                  <td><a href="cs111Example.html">CSCI 111 - Introduction to Algorithmic Problem-Solving</a></td>
+                    <th>Name</th>
+                    <th>Due Date</th>
                 </tr>
-
                 <tr>
-                  <td><a href="#">CSCI 211 - Object-Oriented Programming in C++</a></td>
+                    <td><a href="assignmentPageST.html">Solve this algorithm</a></td>
+                    <td>11/30/2021</td>
                 </tr>
+                <tr>
+                    <td>Solve this recurrence</td>
+                    <td>12/05/2021</td>
+                </tr>
+                <tr>
+                    <td>Solve this relation</td>
+                    <td>12/10/2021</td>
+                </tr>
+            </table>
 
-                  <tr>
-                    <td><a href="#">CSCI 212 - Object-Oriented Programming in Java</a></td>
-                  </tr>
 
-                  <tr>
-                    <td><a href="cs220Example.html">CSCI 220 - Discrete Structures</a></td>
-                  </tr>
-
-                  <tr>
-                    <td><a href="#">CSCI 240 - Computer Organization and Assembly Language</a></td>
-                  </tr>
-
-              </table>
 
         </div>
 

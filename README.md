@@ -1,5 +1,7 @@
 355 Term Project: Ben and Amna
 
+Website Link: https://benkluger.github.io/chalkboard/
+
 TODO:
 
 - Fix footer collapsable text

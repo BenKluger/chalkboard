@@ -3,9 +3,9 @@
 TODO:
 
 - RUN THRU BOTH VALIDATORS
+- Fix footer collapsable text
 - ~~Edit sign up page~~
 - ~~Remove button from sidebar~~
-- Fix footer collapsable text
 - ~~Remove logo from mini sidebar~~
 - ~~Change assignments section in students so that it brings you to a random page, rather than clicking on the preview of assignments. Copy code from Instructer Section for layout.~~
 - ~~Fix buttons so that they are all clickable within the button "space", rather than just the text~~
@@ -13,16 +13,16 @@ TODO:
 Small TODO:
 
 - Choose File button on assignmentPageST.html is wonky
+- Confirm links work to proper places
+- Confirm everything follows consistent format of "CSCI" ?
+- Search field + button allignment
 - ~~Textbox not aligned with buttons~~
 - ~~Consider adding floating # buttons by each static text "link"~~
 - ~~Make assignments in grades to link to actual assignments?~~
-- Confirm everything follows consistent format of "CSCI" ?
-- Search field + button allignment
 - ~~Consider changing layout of Available Courses in both St and Ins~~
 - ~~Make sure all buttons have class = "btn btn-info"~~
 - ~~Figure out fix for buttons remaining darkened after being clicked - see sidebar hamburger for example~~
 - ~~ChalkBoard or Chalkboard? Official name is Blackboard~~
-- Confirm links work to proper places
 
 # Course Web Application
 

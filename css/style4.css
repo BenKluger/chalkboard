@@ -94,6 +94,12 @@ span {
   border-color: #8e8268;
 }
 
+#content a.btn:hover, 
+#content a.btn-info:hover{
+  background-color: #5c7641;
+  color: white;
+}
+
 .col img,
 .footlogo {
   border-radius: 40%;
@@ -366,3 +372,5 @@ ul.CTAs a {
     width: 0px;
   }
 }
+
+

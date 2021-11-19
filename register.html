@@ -66,18 +66,18 @@
                         <p class="text-white-50 mb-5">Please fill in this form to create an account</p>
 
                         <div class="form-outline form-white mb-4">
-                          <label for="uname" class="form-label">First Name</label>
-                          <input type="text" class="form-control form-control-lg" id="uname" placeholder="Joe" required>
+                          <label for="fname" class="form-label">First Name</label>
+                          <input type="text" class="form-control form-control-lg" id="fname" placeholder="Joe" required>
                       </div>
 
                       <div class="form-outline form-white mb-4">
-                        <label for="uname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control form-control-lg" id="uname" placeholder="Smith" required>
+                        <label for="lname" class="form-label">Last Name</label>
+                        <input type="text" class="form-control form-control-lg" id="lname" placeholder="Smith" required>
                     </div>
 
                         <div class="form-outline form-white mb-4">
-                            <label for="uname" class="form-label">Email</label>
-                            <input type="text" class="form-control form-control-lg" id="uname" placeholder="email@example.com" required>
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control form-control-lg" id="email" placeholder="email@example.com" required>
                         </div>
           
                         <div class="form-outline form-white mb-4">
@@ -86,8 +86,8 @@
                         </div>
 
                         <div class="form-outline form-white mb-4">
-                          <label for="passw" class="form-label">Re-enter Password</label>
-                          <input type="password" id="passw" class="form-control form-control-lg" placeholder="hunter2" required>
+                          <label for="repassw" class="form-label">Re-enter Password</label>
+                          <input type="password" id="repassw" class="form-control form-control-lg" placeholder="hunter2" required>
                       </div>
 
                         <div id = "userType">
@@ -139,13 +139,8 @@
         
             </footer>
             </div>
-          
-
-
-        
       </div>
 
-    </div>
     <script>
       $(document).ready(function () {
         $("#sidebarCollapse").on("click", function () {

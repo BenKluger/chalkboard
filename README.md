@@ -2,7 +2,7 @@
 
 TODO:
 
-- RUN THRU BOTH VALIDATORS
+- RUN THRU BOTH VALIDATORS~~
 - Fix footer collapsable text
 - ~~Edit sign up page~~
 - ~~Remove button from sidebar~~

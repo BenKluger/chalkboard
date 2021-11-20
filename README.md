@@ -1,9 +1,11 @@
 355 Term Project: Ben and Amna
 
+Website Link: https://benkluger.github.io/chalkboard/
+
 TODO:
 
-- RUN THRU BOTH VALIDATORS
 - Fix footer collapsable text
+- ~~RUN THRU BOTH VALIDATORS~~
 - ~~Edit sign up page~~
 - ~~Remove button from sidebar~~
 - ~~Remove logo from mini sidebar~~

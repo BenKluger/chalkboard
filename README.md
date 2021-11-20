@@ -4,7 +4,7 @@ Website Link: https://benkluger.github.io/chalkboard/
 
 TODO:
 
-- Fix footer collapsable text
+- ~~Fix footer collapsable text~~
 - ~~RUN THRU BOTH VALIDATORS~~
 - ~~Edit sign up page~~
 - ~~Remove button from sidebar~~
@@ -15,10 +15,9 @@ TODO:
 Small TODO:
 
 - Choose File button on assignmentPageST.html is wonky
-- Confirm links work to proper places
-- Confirm everything follows consistent format of "CSCI" ?
 - Search field + button allignment
-- Make h4's into h3's and find a good size
+- ~~Confirm links work to proper places~~
+- ~~Confirm everything follows consistent format of "CSCI"~~
 - ~~Textbox not aligned with buttons~~
 - ~~Consider adding floating # buttons by each static text "link"~~
 - ~~Make assignments in grades to link to actual assignments?~~

@@ -105,7 +105,7 @@ span {
   color: white;
 }
 
-.col img,
+#benefits img,
 .footlogo {
   border-radius: 40%;
   width: 35pt;
@@ -142,6 +142,17 @@ footer p {
 
 footer {
   margin-top: 20px;
+}
+
+.benefits-inner-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.benefit {
+  color: var(--theme-dark-color);
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 /* ---------------------------------------------------

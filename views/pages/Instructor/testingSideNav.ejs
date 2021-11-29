@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_iside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <h2>My Courses</h2>
+            <div class="line"></div>
+            <a href="cs220DB.html">CSCI 220 - Discrete Structures</a>
+            <div class="line"></div>
+            <a href="#">CSCI 240 - Computer Organization and Assembly Language</a>
+
+            <div class="line"></div>
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+   
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

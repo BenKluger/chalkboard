@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_iside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+        <div>
+          <%- include('../../partials/_top-nav') %>
+
+
+            <h1>CSCI 220 Assignments</h1>
+            <table class="table">
+                <tr>
+                    <th>Name</th>
+                    <th>Due Date</th>
+                </tr>
+                <tr>
+                    <td><a href="algorithmAssignment.html">Solve this algorithm</a></td>
+                    <td>11/30/2021</td>
+                </tr>
+                <tr>
+                    <td>Solve this recurrence</td>
+                    <td>12/05/2021</td>
+                </tr>
+                <tr>
+                    <td>Solve this relation</td>
+                    <td>12/10/2021</td>
+                </tr>
+            </table>
+
+
+
+        </div>
+
+
+        <%- include('../partials/_footer') %>
+      </div>
+
+    </div>
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

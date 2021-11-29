@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_iside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <h1>CSCI 220</h1>
+            <h4>Name:</h4>
+            <p>Discrete Structures</p>
+            <h4>Instructors:</h4>
+            <p>Maxwell White, Waxgod, Obrenic, High Overseer</p>
+            <h4>Description:</h4>
+            <p>Algorithms, recursion, recurrences, asymptotics, relations, graphs and trees, applications.</p>
+            <h4>Materials:</h4>
+            <p>Computer, brain, notebook, pencil, calculator.</p>
+            <a href="createCourse.html" class="btn btn-info">Edit Course</a>
+
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

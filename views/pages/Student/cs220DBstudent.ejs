@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <%- include('../../partials/_stside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div class="dontTest">
+            <%- include('../../partials/_top-nav') %>
+
+            <!-- THIS IS WHERE THE SAMPLE STARTS! -->
+
+            <h1>CSCI 220</h1>  
+    <h2>Course Name</h2>
+    <p>Discrete Structures</p>
+    <h2>Course Description</h2>
+    <p>Algorithms, recursion, recurrences, asymptotics, relations, graphs and trees, applications.</p>
+    <a href="assignmentsDBst.html"><h2>Assignments</h2></a>
+    <ol>
+        <li>Solve this algorithm</li>
+        <li>Solve this recurrence</li>
+        <li>...</li>
+    </ol>
+    <a href="studentGrades.html" class="btn btn-info">My Grades</a>
+
+
+
+
+            <!-- THIS IS WHERE THE SAMPLE WORK ENDS! -->
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <%- include('../../partials/_stside-nav') %>
+
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div class="dontTest">
+            <%- include('../../partials/_top-nav') %>
+
+            <!-- THIS IS WHERE THE SAMPLE STARTS! -->
+
+            <h2><a href="cs220DBstudent.html">CSCI 220 - Discrete Structures</a></h2>
+            <div class="line"></div>
+            <a href="assignmentPageST.html"><h3>Assignment 1 - Solve This Algorithm</h3></a>
+            <p>Grade: --/100</p>
+            <div class="line"></div>
+            <h3>Assignment 2 - Solve This Recurrence</h3>
+            <p>Grade: --/100</p>
+            <div class="line"></div>
+
+            <!-- THIS IS WHERE THE SAMPLE WORK ENDS! -->
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

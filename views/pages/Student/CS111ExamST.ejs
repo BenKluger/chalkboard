@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <%- include('../../partials/_stside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div class="dontTest">
+            <%- include('../../partials/_top-nav') %>
+
+
+            <!--This is the main content of the page-->
+    <h1>CSCI 111</h1>
+    <h2>Name:</h2>
+    <p>Introduction to Algorithmic Problem-Solving</p>
+    <h2>Instructors:</h2>
+    <p>Waxgod, Obrenic, High Overseer</p>
+    <h2>Description:</h2>
+    <p>Introduction to the principles of algorithmic analysis and computational implementation. Topics include implementation methodologies, including choice and use of data types, objects, classes, and methods; control structures; basic data structures including arrays; procedures and functions; parameters and arguments; scope and lifetime of variables; input and output; Written documentation describing algorithms and identification and correction of algorithmic implementations.</p>
+    <h2>Materials:</h2>
+    <p>Computer, brain, notebook, pencil.</p>
+    <button class = "btn btn-info">Apply</button>    
+    <a href="availCoursesST.html" class = "btn btn-info">Available Courses</a>
+
+            <!-- THIS IS WHERE THE SAMPLE WORK ENDS! -->
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

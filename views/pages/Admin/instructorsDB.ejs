@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <%- include('../../partials/_aside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <h2 class="text-center">Instructors Database</h2>
+            <table class="table table-hover">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>ID #</th>
+                    <th>Department</th>
+                </tr>
+                <tr>
+                    <td>Richard</td>
+                    <td>MacLeod</td>
+                    <td>6489216735</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>Leonard</td>
+                    <td>Parr</td>
+                    <td>4521976328</td>
+                    <td>Psychology</td>
+                </tr>
+                <tr>
+                    <td>Grace</td>
+                    <td>Hardacre</td>
+                    <td>7621648932</td>
+                    <td>English</td>
+                </tr>
+                <tr>
+                    <td>William</td>
+                    <td>Mitchell</td>
+                    <td>63214587920</td>
+                    <td>Social Sciences</td>
+                </tr>
+                <tr>
+                    <td>Colin</td>
+                    <td>Edmunds</td>
+                    <td>9428791536</td>
+                    <td>Linguistics</td>
+                </tr>
+            </table>
+            <a href="adminHomePage.html" class="btn btn-info float-right">Dashboard</a>
+
+
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

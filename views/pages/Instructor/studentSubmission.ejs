@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_iside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+        <div>
+          <%- include('../../partials/_top-nav') %>
+
+            <h1>CSCI 220 Assignment</h1>
+            <a href="algorithmAssignment.html" class="btn btn-info">Return</a>
+            <h3>Solve This Algorithm</h3>
+            <h4>Kason Mendoza's Submission</h4>
+            <button class="btn btn-info float-right">Allow Resubmit</button>
+            <button class="btn btn-info float-right">Answer Key</button>
+            <h5>Question 1: What the dog do?</h5>
+            <p>It bark.</p>
+            <button class="btn btn-info">&#x2713;</button>
+            <button class="btn btn-info">&#x2717;</button>
+            <h5>What is Dijkstra's algorithm used for?</h5>
+            <p>Shortest path</p>
+            <button class="btn btn-info">&#x2713;</button>
+            <button class="btn btn-info">&#x2717;</button>
+            <h5>Solving what problem would instantly make you a millionaire?</h5>
+            <p>P = NP?</p>
+            <button class="btn btn-info">&#x2713;</button>
+            <button class="btn btn-info">&#x2717;</button>
+            <div class="slider">
+                <p class = "grade">Final Grade</p>
+                <input type="range" min="0" max="100" value="10" oninput="rangeValue.innerText = this.value">
+                <p id="rangeValue">10</p>
+            </div>
+            <form class="form-group">
+                <br><h5>Professor's Feedback:</h5><br>
+                <textarea class="form-control" name="feedback" id="feedback" rows="10" cols="50" placeholder="How did the student do?"></textarea>
+            </form>
+            <button class="btn btn-info float-right">Submit Grade</button>
+
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

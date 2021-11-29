@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_iside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+        <div>
+          <%- include('../../partials/_top-nav') %>
+            <h1>Create a Course</h1>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="courseName">Course Name</label><br>
+                        <input type="text" id="courseName" name="courseName" placeholder="Discrete Structures" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="classNum">Class Number</label><br>
+                        <input type="text" id="classNum" name="classNum" placeholder="CSCI 220" class="form-control">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="credits">Credits</label>
+                        <select id="credits" class="form-control">
+                          <option selected>Choose...</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    
+                    <div class="form-group col-md-10">
+                        <label for="Instructors">Instructors</label><br> 
+                        <input type="text" id="Instructors" name="Instructors" placeholder="Maxwell White" class="form-control">
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <label for="description">Course Description</label><br>
+                    <textarea name="description" id="description" rows="10" cols="50" placeholder="Describe the course" class="form-control"></textarea>
+                </div>
+
+                <button class="btn btn-info float-right">Publish Course</button>
+                
+              
+              <!-- Consider putting this in if easy.
+              <label for="prereqs">Prerequisites:</label><br>
+              <input type="text" id="prereqs" name="prereqs" placeholder="MATH 120"><br> -->
+              <!-- TODO: FIX THE ISSUE WITH THE LINE BREAKS -->
+              <!-- <input type="text" id="classNum" name="classNum"> -->
+              
+            </form>
+
+
+
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

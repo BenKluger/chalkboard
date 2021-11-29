@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <%- include('../../partials/_stside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div class="dontTest">
+            <%- include('../../partials/_top-nav') %>
+
+            <!-- THIS IS WHERE THE SAMPLE STARTS! -->
+
+            <h1>CSCI 220</h1>
+    <h2>Name:</h2>
+    <p>Discrete Structures</p>
+    <h2>Instructors:</h2>
+    <p>Maxwell White, Waxgod, Obrenic, High Overseer</p>
+    <h2>Description:</h2>
+    <p>Algorithms, recursion, recurrences, asymptotics, relations, graphs and trees, applications.</p>
+    <h2>Materials:</h2>
+    <p>Computer, brain, notebook, pencil, calculator.</p>
+    <button class = "btn btn-info">Apply</button>    
+    <a href="availCoursesST.html" class = "btn btn-info">Available Courses</a>
+
+            <!-- THIS IS WHERE THE SAMPLE WORK ENDS! -->
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

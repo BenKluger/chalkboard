@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <%- include('../../partials/_aside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <h2 class="text-center">Students Database</h2>
+            <table class="table table-hover">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>ID #</th>
+                    <th>Status</th>
+                    <th>GPA</th>
+                </tr>
+                <tr>
+                    <td>Keith</td>
+                    <td>Turner</td>
+                    <td>2154987362</td>
+                    <td>Enrolled</td>
+                    <td>3.2/4.0</td>
+                </tr>
+                <tr>
+                    <td>Tracey</td>
+                    <td>Langdon</td>
+                    <td>3154687264</td>
+                    <td>Graduated</td>
+                    <td>2.8/4.0</td>
+                </tr>
+                <tr>
+                    <td>Theresa</td>
+                    <td>Buckland</td>
+                    <td>12468795324</td>
+                    <td>Enrolled</td>
+                    <td>3.1/4.0</td>
+                </tr>
+                <tr>
+                    <td>Connor</td>
+                    <td>Wilkins</td>
+                    <td>1468759324</td>
+                    <td>Graduated</td>
+                    <td>2.9/4.0</td>
+                </tr>
+                <tr>
+                    <td>Hannah</td>
+                    <td>Lyman</td>
+                    <td>2154946792</td>
+                    <td>Enrolled</td>
+                    <td>3.8/4.0</td>
+                </tr>
+                <tr>
+                    <td>Isaac</td>
+                    <td>Walker</td>
+                    <td>4675987264</td>
+                    <td>Graduated</td>
+                    <td>3.5/4.0</td>
+                </tr>
+            </table>
+            <a href="adminHomePage.html" class="btn btn-info float-right">Dashboard</a>
+
+
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

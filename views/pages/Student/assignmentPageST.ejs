@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <%- include('../../partials/_stside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div class="dontTest">
+            <%- include('../../partials/_top-nav') %>
+
+            <!-- THIS IS WHERE THE SAMPLE STARTS! -->
+
+            <h1><a href="cs220DBstudent.html">CSCI 220 - Discrete Structures</a></h1>
+    <h2>Solve This Algorithm</h2>
+    <h4>Assignment Description:</h4>
+    <p>Use the given outline to implement the algorithm for a Fibonacci Sequence of the first 10 numbers.</p>
+    <p>You may enter your code in the text box below or attach a file</p>
+    
+    <div class="form-row">
+    <textarea class = "form-control" name="assignSubmission" id="assignSub" rows="10" cols="50" placeholder="Enter Your Code Here"></textarea>
+    </div>
+    
+    <br>
+    <form>
+        <input class = "btn btn-info float-right" type="file" id="myFile" name="filename">
+    </form>
+  
+
+    
+    <button class = "btn btn-info">Save Progress</button>
+    <button class = "btn btn-info">Submit Assignment</button>
+    <a href="cs220DBstudent.html" class = "btn btn-info">Course Dashboard</a>
+
+
+
+            <!-- THIS IS WHERE THE SAMPLE WORK ENDS! -->
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

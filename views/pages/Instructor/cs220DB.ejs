@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_iside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <h1>CSCI 220</h1>  
+            <h2>Course Name</h2>
+            <p>Discrete Structures</p>
+            <h2>Course Description</h2>
+            <p>Algorithms, recursion, recurrences, asymptotics, relations, graphs and trees, applications.</p>
+            <h2><a href="assignmentsDB.html">Assignments</a></h2>
+            <ol>
+                <li>Solve this algorithm</li>
+                <li>Solve this recurrence</li>
+                <li>...</li>
+            </ol>
+            <h2><a href="studentRoster.html">Students</a></h2>
+            <ol>
+                <li>Kason Mendoza</li>
+                <li>Aisha Harrell</li>
+                <li>Daniela Rice</li>
+                <li>...</li>
+            </ol>
+
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

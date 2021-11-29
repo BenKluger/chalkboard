@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+            <div class="container py-5">
+              <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card-body p-5 text-center rounded login">
+                        <a href="index.html"><img src="img/cover.png" alt="Logo" class="rounded mx-auto d-block"></a>
+                        
+                      <div class="mb-md-4 mt-md-2 ">
+          
+                        <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                        <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                        
+                        <form action="login-form" id="login-form">
+                          <div class="form-outline form-white mb-4">
+                              <label for="uname" class="form-label">Email</label>
+                              <input type="text" class="form-control form-control-lg" id="email" name="email" placeholder="Email" required>
+                          </div>
+            
+                          <div class="form-outline form-white mb-4">
+                              <label for="passw" class="form-label">Password</label>
+                              <input type="password" id="passw" class="form-control form-control-lg" name="passw" placeholder="Password" required>
+                          </div>
+                          <div id = "userType">
+                              <input type="radio" id="student" name="User" value="student">
+                              <label for="student">Student</label>
+                  
+                              <input type="radio" id="instructor" name="User" value="instructor">
+                              <label for="instructor">Instructor</label>
+                  
+                              <input type="radio" id="admin" name="User" value="admin">                       
+                              <label for="admin">Admin</label>           
+                          </div>
+            
+                          <button class="btn btn-info btn-lg px-5" type="submit">Login</button><!--This button will incorporate with the radio buttons eventually.-->
+                          <br>
+                        </form>
+                        <!-- <a href="Student/studentHomePage.html" class="btn btn-info">Student Login</a>
+                        <a href="Instructor/instructorHomePage.html" class="btn btn-info">Instructor Login</a>
+                        <a href="Admin/adminHomePage.html" class="btn btn-info">Admin Login</a> -->
+          
+                      </div>
+                      <div>
+                        <p class="">Don't have an account? <a href="register.html" class="fw-bold">Sign Up</a></p>
+                      </div>
+          
+                    </div>
+                  </div>
+                
+              </div>
+              <%- include('../partials/_footer') %>
+            </div>
+        
+      </div>
+
+      <script>
+        const loginForm = document.getElementById('login-form');
+        loginForm.addEventListener('submit', loginUser)
+
+        async function loginUser(event){
+          event.preventDefault();
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('passw').value;
+          const usertype = document.querySelector('input[name="User"]:checked').value;
+
+          const result = await fetch('/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email,
+              password,
+              usertype
+            })
+          }).then((res) => res.json());
+          console.log(result);
+
+          if(result.status === 'ok'){
+            //everything went fine
+            console.log('Got the token', result.data)
+          }else {
+            alert(result.error)
+          }
+
+        }
+      </script>
+  </body>
+</html>

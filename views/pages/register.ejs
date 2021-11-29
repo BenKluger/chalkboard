@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/_head') %>
+  <body>
+    <div class="wrapper">
+            <div class="container py-5">
+              <div class="row justify-content-center align-items-center">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card-body p-5 text-center rounded login">
+                        <a href="index.html"><img src="img/cover.png" alt="Logo" class="rounded mx-auto d-block"></a>
+                      <form action="reg-form" id="reg-form">
+                        <div class="mb-md-4 mt-md-2 ">
+            
+                          <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
+                          <p class="text-white-50 mb-5">Please fill in this form to create an account</p>
+                          
+                          <div id="formErrors"></div>
+                          <div class="form-outline form-white mb-4">
+                            <label for="fname" class="form-label">First Name</label>
+                            <input type="text" autocomplete="off" class="form-control form-control-lg" id="fname" name="fname" placeholder="Joe" required>
+                        </div>
+
+                        <div class="form-outline form-white mb-4">
+                          <label for="lname" class="form-label">Last Name</label>
+                          <input type="text" class="form-control form-control-lg" id="lname" name="lname" placeholder="Smith" autocomplete="off" required>
+                        </div>
+
+                        <div class="form-outline form-white mb-4">
+                              <label for="email" class="form-label">Email</label>
+                              <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="email@example.com" autocomplete="off" required>
+                        </div>
+            
+                        <div class="form-outline form-white mb-4">
+                            <label for="passw" class="form-label">Password</label>
+                            <input type="password" id="passw" class="form-control form-control-lg" name="passw" placeholder="hunter2" required>
+                        </div>
+
+                        <div class="form-outline form-white mb-4">
+                            <label for="repassw" class="form-label">Re-enter Password</label>
+                            <input type="password" id="repassw" class="form-control form-control-lg" name="repassw" placeholder="hunter2" required>
+                        </div>
+
+                          <div id = "userType">
+                              <input type="radio" id="student" name="User" value="student">
+                              <label for="student">Student</label>
+                  
+                              <input type="radio" id="instructor" name="User" value="instructor">
+                              <label for="instructor">Instructor</label>
+                  
+                              <input type="radio" id="admin" name="User" value="admin">                       
+                              <label for="admin">Admin</label>           
+                          </div>
+            
+                          <button class="btn btn-info btn-lg px-5" type="submit" id="reg-form-sbmt">Sign Up</button><!--This button will incorporate with the radio buttons eventually.-->
+                          <br>
+                      </form>
+          
+                      </div>
+                      <div>
+                        <p class="">Already have an account? <a href="login.ejs" class="fw-bold">Sign In</a></p>
+                      </div>
+          
+                    </div>
+                  </div>
+                
+              </div>
+              <%- include('../partials/_footer') %>
+            </div>
+      </div>
+
+      <script>
+        function removeAllChildNodes(parent) {
+          while (parent.firstChild) {
+              parent.removeChild(parent.firstChild);
+          }
+        }
+        function check(){
+          var radios = document.getElementsByName("User");
+          for (var i = 0, len = radios.length; i < len; i++) {
+            if (radios[i].checked) {
+              return true;
+            }
+          }
+          return false;
+        }
+        function checkForm() {
+                // TODO: Perform input validation 
+                const fname = document.querySelector('#fname');
+                const lname = document.querySelector('#lname');
+                const email = document.querySelector('#email');
+                const password = document.querySelector('#passw');
+                const passConfirm = document.querySelector('#repassw');
+                const errorMessage = document.querySelector('#formErrors');
+                errorMessage.classList.add("hide")
+                removeAllChildNodes(errorMessage);
+                let errorsFound = false;
+                let reEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$/;
+                const errors = document.createElement("ul");
+                errorMessage.appendChild(errors);
+
+                if(email.value == "" || !reEmail.test(email.value)){
+                    console.log("error")
+                    errorsFound = true;
+                    email.classList.add("error");
+                    const emailError = document.createElement("li");
+                    emailError.innerHTML = "Invalid or missing email address.";
+                    errors.appendChild(emailError);
+                }
+                if(password.value.length < 5){
+                    errorsFound = true;
+                    password.classList.add("error");
+                    const passwordError = document.createElement("li");
+                    passwordError.innerHTML = "Password must be at least 5 characters.";
+                    errors.appendChild(passwordError);
+                }
+                if(password.value == "" || !/[a-z]/.test(password.value)){
+                    errorsFound = true;
+                    password.classList.add("error");
+                    const passwordError = document.createElement("li");
+                    passwordError.innerHTML = "Password must contain at least one lowercase character.";
+                    errors.appendChild(passwordError);
+                }
+                if(password.value == "" || !/[A-Z]/.test(password.value)){
+                    errorsFound = true;
+                    password.classList.add("error");
+                    const passwordError = document.createElement("li");
+                    passwordError.innerHTML = "Password must contain at least one uppercase character.";
+                    errors.appendChild(passwordError);
+                }
+                if(password.value == "" || !/[0-9]/.test(password.value)){
+                    errorsFound = true;
+                    password.classList.add("error");
+                    const passwordError = document.createElement("li");
+                    passwordError.innerHTML = "Password must contain at least one digit.";
+                    errors.appendChild(passwordError);
+                }
+                if(passConfirm == "" || passConfirm.value !== password.value){
+                    errorsFound = true;
+                    passConfirm.classList.add("error");
+                    const passConfirmError = document.createElement("li");
+                    passConfirmError.innerHTML = "Password and confirmation password don't match.";
+                    errors.appendChild(passConfirmError);
+                }
+                if(check() !== true){
+                  errorsFound = true;
+                  const selectUser = document.createElement("li");
+                  selectUser.innerHTML = "Please select a user type";
+                  errors.appendChild(selectUser);
+                }
+                if(errorsFound){
+                    errorMessage.classList.remove("hide")
+                }
+                if(!errorsFound){
+                    errorMessage.classList.add("hide");
+                    fname.classList.remove("error");
+                    lname.classList.remove("error");
+                    email.classList.remove("error");
+                    password.classList.remove("error");
+                    passConfirm.classList.remove("error");
+                }
+                if(errorsFound){
+                  return false;
+                }
+            }
+        
+        
+    const loginForm = document.getElementById('reg-form');
+     loginForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // checkForm();
+        if(checkForm() !== false){
+          registerUser(event);
+        }
+    })
+        // const loginForm = document.getElementById('reg-form');
+        // loginForm.addEventListener('submit', registerUser)
+        async function registerUser(event){
+          event.preventDefault();
+          const firstname = document.getElementById('fname').value;
+          const lastname = document.getElementById('lname').value;
+          const email = document.getElementById('email').value;
+          const password = document.getElementById('passw').value;
+          const repassword = document.getElementById('repassw').value;
+          const usertype = document.querySelector('input[name="User"]:checked').value;
+
+          const result = await fetch('/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              firstname,
+              lastname,
+              email,
+              password,
+              repassword,
+              usertype
+            })
+          }).then((res) => res.json());
+          console.log(result);
+        }
+      </script>
+
+  </body>
+</html>
+

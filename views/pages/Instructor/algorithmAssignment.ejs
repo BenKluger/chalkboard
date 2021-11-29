@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_iside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <h1>CSCI 220 Assignment Submissions</h1>
+            <h2>Solve This Algorithm</h2>
+            <h4>Submissions:</h4>
+            <table class="table">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td><a href="studentSubmission.html">Kason Mendoza</a></td>
+                    <td>MISSING</td>
+                </tr>
+                <tr>
+                    <td>Aisha Harrell</td>
+                    <td>SUBMITTED</td>
+                </tr>
+                <tr>
+                    <td>Daniela Rice</td>
+                    <td>MISSING</td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>MISSING</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+    <!-- <script>
+      $(document).ready(function () {
+        $("#sidebarCollapse").on("click", function () {
+          $("#sidebar").toggleClass("active");
+          $(".logo").toggleClass("active");
+        });
+        $("#sidebarCollapse").on("click", function showImage() {
+          $(".logo").toggle();
+        });
+      });
+    </script> -->
+  </body>
+</html>

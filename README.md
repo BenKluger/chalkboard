@@ -2,6 +2,9 @@
 
 Website Link: https://benkluger.github.io/chalkboard/
 
+Followed this video to implement Login and registering a user: https://www.youtube.com/watch?v=b91XgdyX-SM
+Used this video to understand how MongoDB works with Node.js: https://www.youtube.com/watch?v=bxsemcrY4gQ
+
 TODO:
 
 - ~~Fix footer collapsable text~~

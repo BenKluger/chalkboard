@@ -1,6 +1,6 @@
 // Load Node Modules
 const express = require("express");
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || '8080';
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const User = require('./model/user');
@@ -22,7 +22,6 @@ mongoose.connect(dbURI, {
         console.log('connected to db');
         app.listen(PORT)})
     .catch((err) => console.log(err))
-
 
 // Render Static Files
 app.use(express.static("public"));

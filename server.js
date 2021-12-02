@@ -21,6 +21,7 @@ mongoose.connect(dbURI, {
 })
     .then((result) => {
         console.log('connected to db');
+        console.log(PORT);
         app.listen(PORT)})
     .catch((err) => console.log(err))
 
@@ -69,8 +70,6 @@ app.get("/", function (req, res) {
       res.render('pages/index');
 });
 
-
-
 // *** POST Routes
 
 app.post('/login', async (req, res) => {
@@ -114,9 +113,9 @@ app.post('/register', async (req, res) => {
             return res.json({ status:'error', error: 'This email has already been used'})
         }
         // res.redirect('/register')
-        throw error
+        // throw error
     }
     // console.log('User created successfully:', response)
     res.json({ status: 'ok' });
-
 })
+

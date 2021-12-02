@@ -1,5 +1,6 @@
 // Load Node Modules
 const express = require("express");
+const PORT = process.env.PORT || 8080;
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const User = require('./model/user');
@@ -19,7 +20,7 @@ mongoose.connect(dbURI, {
 })
     .then((result) => {
         console.log('connected to db');
-        app.listen(8080)})
+        app.listen(PORT)})
     .catch((err) => console.log(err))
 
 

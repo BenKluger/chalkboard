@@ -1,6 +1,7 @@
 // Load Node Modules
-const express = require("express");
-const PORT = process.env.PORT || '8080';
+const express = require('express');
+require('dotenv').config();
+const PORT = process.env.PORT || '80';
 const ejs = require("ejs");
 const mongoose = require('mongoose');
 const User = require('./model/user');
@@ -32,8 +33,6 @@ app.use(express.json());
 app.set("view engine", "ejs");
 
 // Port website will run on
-// app.listen(8080);
-
 // *** GET Routes - display pages ***
 
 app.get('/adminHome', function(res, res){

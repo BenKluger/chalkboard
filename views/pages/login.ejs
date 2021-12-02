@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('../partials/_head') %>
-
+  <head>
+    <title>Login</title>
+  </head>
   <body>
     <div class="wrapper">
             <div class="container py-5">
               <div class="row justify-content-center align-items-center">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card-body p-5 text-center rounded login">
-                        <a href="index.html"><img src="img/cover.png" alt="Logo" class="rounded mx-auto d-block"></a>
+                        <a href="/"><img src="img/cover.png" alt="Logo" class="rounded mx-auto d-block"></a>
                         
                       <div class="mb-md-4 mt-md-2 ">
           
@@ -45,7 +47,7 @@
           
                       </div>
                       <div>
-                        <p class="">Don't have an account? <a href="register.html" class="fw-bold">Sign Up</a></p>
+                        <p class="">Don't have an account? <a href="/register" class="fw-bold">Sign Up</a></p>
                       </div>
           
                     </div>
@@ -83,6 +85,7 @@
           if(result.status === 'ok'){
             //everything went fine
             console.log('Got the token', result.data)
+            // fetch('/StHomepage')
           }else {
             alert(result.error)
           }

@@ -35,22 +35,46 @@ app.set("view engine", "ejs");
 // app.listen(8080);
 
 // *** GET Routes - display pages ***
-// Root Route
-app.get("/", function (req, res) {
-//   res.render("pages/register");
-  res.render('pages/index');
+
+app.get('/adminHome', function(res, res){
+    User.find()
+        .then((result) => {
+            res.render('pages/Admin/adminHomePage', {users: result});
+        })
+        .catch((err) => {
+            console.log(err);
+        })
 });
+
+app.get('/users', function(res, res){
+    User.find()
+        .then((result) => {
+            res.render('pages/Admin/usersDB', {users: result});
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+});
+app.get('/StHomepage', function (req, res){
+    res.render('pages/Student/studentHomePage')
+})
 app.get('/login', function (req, res) {
     res.render("pages/login");
 });
-app.get("/register", function (req, res) {
+app.get('/register', function (req, res) {
     res.render("pages/register");
 });
+
+// Root Route
+app.get("/", function (req, res) {
+      res.render('pages/index');
+});
+
+
 
 // *** POST Routes
 
 app.post('/login', async (req, res) => {
-
     const { email, password, usertype } = req.body;
     const user = await User.findOne({ email }).lean();
     if(!user){
@@ -62,14 +86,11 @@ app.post('/login', async (req, res) => {
             id: user._id, 
             email: user.email
         }, JWT_SECRET)
-
         return res.json({status: 'ok', data: token })
-        // if(usertype == 'student')
     }
 
     res.json({status: 'error', error: 'Invalid username/password'});
 })
-
 
 
 app.post('/register', async (req, res) => {
@@ -84,16 +105,19 @@ app.post('/register', async (req, res) => {
             password,
             usertype
         })
+        // res.redirect('/login');
         console.log('User created successfully: ', response);
-        res.redirect('pages/login');
+        // window.location.href="http://newURL.com";
+        // res.redirect('/login');
+
     } catch (error) {
         if(error.code === 11000){
             return res.json({ status:'error', error: 'This email has already been used'})
         }
         // res.redirect('/register')
-        // throwerror
+        throw error
     }
-
+    // console.log('User created successfully:', response)
     res.json({ status: 'ok' });
 
 })

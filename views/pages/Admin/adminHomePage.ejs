@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('../../partials/_head') %>
+  <head>
+    <title>Admin|Home</title>
+  </head>
   <!--Previously, the head of just this page called: <script src ="js/script.js"></script> on line 35. Perhaps check out -->
 
   <body>
@@ -12,6 +15,34 @@
       <div id="content">
           <div>
             <%- include('../../partials/_top-nav') %>
+
+            <!-- Users saved in Database -->
+            <h2>Users Preview</h2>
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>User Type</th>
+                </tr>
+                <% for(let i = 0; i < 4; i++){ %>
+                    <tr>
+                        <td> <%= users[i].firstname %> </td>
+                        <td> <%= users[i].lastname %> </td>
+                        <td> <%= users[i].email %> </td>
+                        <td> <%= users[i].usertype %> </td>
+                    </tr>                    
+                <% }; %>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+
+            </table>
+            <a href="/users" class="btn float-right btn-info">View More</a> <br>
+
 
             <h2>Instructors Preview</h2>
             <table class="table table-hover table-striped">

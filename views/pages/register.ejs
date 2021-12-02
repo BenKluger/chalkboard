@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('../partials/_head') %>
+  <head>
+    <title>Sign Up</title>
+  </head>
   <body>
     <div class="wrapper">
             <div class="container py-5">
               <div class="row justify-content-center align-items-center">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card-body p-5 text-center rounded login">
-                        <a href="index.html"><img src="img/cover.png" alt="Logo" class="rounded mx-auto d-block"></a>
+                        <a href="/"><img src="img/cover.png" alt="Logo" class="rounded mx-auto d-block"></a>
                       <form action="reg-form" id="reg-form">
                         <div class="mb-md-4 mt-md-2 ">
             
@@ -57,7 +60,7 @@
           
                       </div>
                       <div>
-                        <p class="">Already have an account? <a href="login.ejs" class="fw-bold">Sign In</a></p>
+                        <p class="">Already have an account? <a href="/login" class="fw-bold">Sign In</a></p>
                       </div>
           
                     </div>
@@ -196,11 +199,12 @@
               repassword,
               usertype
             })
-          }).then((res) => res.json());
+          }).then((res) => res.json())
           console.log(result);
         }
       </script>
 
   </body>
 </html>
-
+<!-- (res) => res.redirected('/login') -->
+<!-- (res) => res.json() -->

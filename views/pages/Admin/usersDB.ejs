@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <%- include('../../partials/_aside-nav') %>
+      <head>
+        <title>Admin|Users</title>
+      </head>
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <h2 class="text-center">Users Database</h2>
+            <table class="table table-hover">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>User Type</th>
+                </tr>
+                <% users.forEach(function(user){ %>
+                    <tr>
+                        <td> <%= user.firstname %> </td>
+                        <td> <%= user.lastname %> </td>
+                        <td> <%= user.email %> </td>
+                        <td> <%= user.usertype %> </td>
+                    </tr>                    
+                <% }); %>
+
+            </table>
+            <a href="/adminHome" class="btn btn-info float-right">Dashboard</a>
+
+
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+  </body>
+</html>

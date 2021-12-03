@@ -45,7 +45,7 @@ app.set("view engine", "ejs");
 // *** GET Routes - display pages ***
 
 /////////////////////////////// ADMIN ROUTES
-app.get("/adminHome", requireAuth, function (res, res) {
+app.get("/adminHome", requireAuth('admin'), function (req, res) {
   User.find()
     .then((result) => {
       res.render("pages/Admin/adminHomePage", { users: result });
@@ -55,7 +55,7 @@ app.get("/adminHome", requireAuth, function (res, res) {
     });
 });
 
-app.get("/users", requireAuth, function (res, res) {
+app.get("/users", requireAuth('admin'), function (req, res) {
   User.find()
     .then((result) => {
       res.render("pages/Admin/usersDB", { users: result });
@@ -66,46 +66,52 @@ app.get("/users", requireAuth, function (res, res) {
 });
 
 ///////////////////////////// INSTRUCTOR ROUTES
-app.get("/instructorHome", requireAuth, function (req, res) {
+app.get("/instructorHome", requireAuth('instructor'), function (req, res) {
   res.render("pages/Instructor/instructorHomePage");
 });
 
-app.get("/availCoursesIN", requireAuth, function (req, res) {
+app.get("/availCoursesIN", requireAuth('instructor'), function (req, res) {
   res.render("pages/Instructor/availCourses");
 });
 
-app.get("/createCourse", requireAuth, function (req, res) {
+app.get("/createCourse", requireAuth('instructor'), function (req, res) {
   res.render("pages/Instructor/createCourse");
 });
 
 ////////////////////////////// STUDENT ROUTES
-app.get("/availCoursesST", requireAuth, function (req, res) {
+app.get("/availCoursesST", requireAuth('student'), function (req, res) {
   res.render("pages/Student/availCoursesST");
 });
 
-app.get("/studentHome", requireAuth, function (req, res) {
+app.get("/studentHome", requireAuth('student'), function (req, res) {
   res.render("pages/Student/studentHomePage");
 });
 
 ///////////////////////////// OTHER ROUTES
-
 //Log in / Register pages
 app.get("/login", function (req, res) {
-  res.render("pages/login");
+    res.cookie("jwt", "", { maxAge: 1 });
+    res.cookie("usertype", "", { maxAge: 1 });
+    res.render("pages/login");
 });
 app.get("/register", function (req, res) {
-  res.render("pages/register");
+    res.cookie("jwt", "", { maxAge: 1 });
+    res.cookie("usertype", "", { maxAge: 1 });
+    res.render("pages/register");
 });
 
 // Logout Route
 app.get("/logout", (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 }); //overwrite the current jwt
+  res.cookie("usertype", "", { maxAge: 1 });
   res.redirect("/");
 });
 
 // Root Route
 app.get("/", function (req, res) {
-  res.render("pages/index");
+    res.cookie("jwt", "", { maxAge: 1 });
+    res.cookie("usertype", "", { maxAge: 1 });
+    res.render("pages/index");
 });
 
 // *** POST Routes
@@ -140,9 +146,10 @@ app.post("/login", async (req, res) => {
         userUrl = "/adminHome";
       }
       res.cookie("jwt", token, { httpOnly: true });
+      res.cookie("usertype", usertype);
       return res.json({ status: "ok", user: user._id, url: userUrl });
     }
-  }
+  } 
   //if email is correct but password is wrong
   res.json({
     status: "error",

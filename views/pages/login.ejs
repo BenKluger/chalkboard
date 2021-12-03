@@ -67,6 +67,9 @@
           event.preventDefault();
           const email = document.getElementById('email').value;
           const password = document.getElementById('passw').value;
+          if(document.querySelector('input[name="User"]:checked') == null){
+            alert('Please select a user type');
+          }
           const usertype = document.querySelector('input[name="User"]:checked').value;
 
           const result = await fetch('/login', {

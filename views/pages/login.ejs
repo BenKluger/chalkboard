@@ -79,8 +79,9 @@
               password,
               usertype
             })
-          }).then((res) => res.json());
+          }).then((res) => res.json())
           console.log(result);
+          window.location.href = result.url;
 
           if(result.status === 'ok'){
             //everything went fine
@@ -88,6 +89,7 @@
             // fetch('/StHomepage')
           }else {
             alert(result.error)
+            window.location.href = result.url;
           }
 
         }

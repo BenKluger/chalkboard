@@ -55,7 +55,7 @@ app.get('/users', function(res, res){
             console.log(err);
         })
 });
-app.get('/StHomepage', function (req, res){
+app.get('/studentHome', function (req, res){
     res.render('pages/Student/studentHomePage')
 })
 app.get('/login', function (req, res) {
@@ -76,19 +76,31 @@ app.post('/login', async (req, res) => {
     const { email, password, usertype } = req.body;
     const user = await User.findOne({ email }).lean();
     if(!user){
-        return res.json({status: 'error', error: 'Invalid username/password'});
+        return res.json({status: 'error', error: 'Invalid user credentials', url: '/login'});
     }
     if(await bcrypt.compare(password, user.password)){
-        // the username, password combination is successful
-        const token = jwt.sign({ 
-            id: user._id, 
-            email: user.email
-        }, JWT_SECRET)
-        return res.json({status: 'ok', data: token })
+        if(usertype == user.usertype){
+            // the username, password combination is successful
+            const token = jwt.sign({ 
+                id: user._id, 
+                email: user.email,
+                usertype: user.usertype
+            }, JWT_SECRET)
+            let userUrl;
+            if(usertype == 'student'){
+                userUrl = '/studentHome'
+            }else if(usertype == 'instructor'){
+                userUrl = '/instructorHome'
+            }else if(usertype == 'admin'){
+                userUrl = '/adminHome'
+            }
+            return res.json({ status: 'ok', data: token, url: userUrl });
+        }
     }
-
-    res.json({status: 'error', error: 'Invalid username/password'});
+    //if email is correct but password is wrong
+    res.json({status: 'error', url: '/login', error: 'Invalid user credentials'});
 })
+
 
 
 app.post('/register', async (req, res) => {
@@ -103,19 +115,13 @@ app.post('/register', async (req, res) => {
             password,
             usertype
         })
-        // res.redirect('/login');
         console.log('User created successfully: ', response);
-        // window.location.href="http://newURL.com";
-        // res.redirect('/login');
-
     } catch (error) {
         if(error.code === 11000){
-            return res.json({ status:'error', error: 'This email has already been used'})
+            return res.json({ status:'error', error: 'This email has already been used', url: '/register'})
         }
-        // res.redirect('/register')
-        // throw error
     }
     // console.log('User created successfully:', response)
-    res.json({ status: 'ok' });
+    res.json({ status: 'ok', url: '/login' });
 })
 

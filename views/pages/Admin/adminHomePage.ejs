@@ -26,6 +26,11 @@
                     <th>User Type</th>
                 </tr>
                 <% for(let i = 0; i < 4; i++){ %>
+                    <% if(users.length < 4){ %>
+                        <tr>
+                            <td> Please view user dashboard</td>
+                        </tr>
+                    <% break } %>
                     <tr>
                         <td> <%= users[i].firstname %> </td>
                         <td> <%= users[i].lastname %> </td>

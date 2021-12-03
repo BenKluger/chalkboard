@@ -50,8 +50,8 @@
                               <input type="radio" id="instructor" name="User" value="instructor">
                               <label for="instructor">Instructor</label>
                   
-                              <input type="radio" id="admin" name="User" value="admin">                       
-                              <label for="admin">Admin</label>           
+                              <!-- <input type="radio" id="admin" name="User" value="admin">                       
+                              <label for="admin">Admin</label>            -->
                           </div>
             
                           <button class="btn btn-info btn-lg px-5" type="submit" id="reg-form-sbmt">Sign Up</button><!--This button will incorporate with the radio buttons eventually.-->
@@ -200,11 +200,13 @@
               usertype
             })
           }).then((res) => res.json())
-          console.log(result);
+            console.log(result);
+            if(result.error){
+              alert(result.error);
+            }
+            window.location.href = result.url;
         }
       </script>
 
   </body>
 </html>
-<!-- (res) => res.redirected('/login') -->
-<!-- (res) => res.json() -->

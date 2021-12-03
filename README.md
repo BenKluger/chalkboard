@@ -42,6 +42,18 @@ Small TODO:
 
 https://chalkboard-amnaben.herokuapp.com/
 
+## Website Functions
+
+Register a user as a student or an admin:
+![image](https://user-images.githubusercontent.com/69221395/144550656-bbfbbd7e-9e91-4afd-86d6-63054adbaf9b.png)
+
+
+
+
+
+
+
+
 ## Wireframe
 
 ###### Desktop:

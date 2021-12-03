@@ -44,6 +44,7 @@ app.set("view engine", "ejs");
 // Port website will run on
 // *** GET Routes - display pages ***
 
+/////////////////////////////// ADMIN ROUTES
 app.get("/adminHome", requireAuth, function (res, res) {
   User.find()
     .then((result) => {
@@ -63,12 +64,30 @@ app.get("/users", requireAuth, function (res, res) {
       console.log(err);
     });
 });
-app.get("/studentHome", requireAuth, function (req, res) {
-  res.render("pages/Student/studentHomePage");
-});
+
+///////////////////////////// INSTRUCTOR ROUTES
 app.get("/instructorHome", requireAuth, function (req, res) {
   res.render("pages/Instructor/instructorHomePage");
 });
+
+app.get("/availCoursesIN", requireAuth, function (req, res) {
+  res.render("pages/Instructor/availCourses");
+});
+
+app.get("/createCourse", requireAuth, function (req, res) {
+  res.render("pages/Instructor/createCourse");
+});
+
+////////////////////////////// STUDENT ROUTES
+app.get("/availCoursesST", requireAuth, function (req, res) {
+  res.render("pages/Student/availCoursesST");
+});
+
+app.get("/studentHome", requireAuth, function (req, res) {
+  res.render("pages/Student/studentHomePage");
+});
+
+///////////////////////////// OTHER ROUTES
 
 //Log in / Register pages
 app.get("/login", function (req, res) {

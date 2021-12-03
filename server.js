@@ -1,5 +1,6 @@
 // Load Node Modules
 const express = require("express");
+const favicon = require('serve-favicon')
 require("dotenv").config();
 const PORT = process.env.PORT || "80";
 const ejs = require("ejs");
@@ -15,6 +16,8 @@ const JWT_SECRET =
 
 // Initialize Express
 const app = express();
+
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 const dbURI =
   "mongodb+srv://cbUser:chalkUser@chalkboard.youmj.mongodb.net/chalkboard?authSource=admin&replicaSet=atlas-untow0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
@@ -33,7 +36,7 @@ mongoose
 
 // Render Static Files
 app.use(express.static("public"));
-// app.use(express.static(__dirname + '/public'));
+
 app.use(express.json());
 //cookie
 app.use(cookieParser());

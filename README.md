@@ -13,6 +13,7 @@ Used this video for general backend knowledge: https://www.youtube.com/watch?v=-
 TODO:
 
 - Fix JWT_Secret so that it is in the .env file
+- Set up chapters
 - ~~Fix footer collapsable text~~
 - ~~RUN THRU BOTH VALIDATORS~~
 - ~~Edit sign up page~~

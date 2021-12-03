@@ -46,6 +46,12 @@ https://chalkboard-amnaben.herokuapp.com/
 
 ## Website Functions
 
+- General functionality
+  - Login will only work if the proper email/password/user type is selected, on an alreay registered account
+  - JWT is used to ensure the correct user is signed in to access pages, otherwise they will be redirected to the login page
+  - Signing out will delete the JWT token, so users must log out in order to restart their session
+  - Only specific user types can access that user type's pages (e.g. student accounts can only access student pages when logged in)
+
 ### Index Pages
 - Register a user as a student or an instructor (with validation):
 ![image](https://user-images.githubusercontent.com/69221395/144550717-4268f429-97d0-4764-ac90-bd659afa2a59.png)
@@ -57,8 +63,8 @@ https://chalkboard-amnaben.herokuapp.com/
 ### Admin Section
 - View all created users and their information (not including passwords)
 - General functionality (accessed within dummy pages - this will be accessible in a future deliverable)
-  - Ability to viewmore detailed information than in the users tab, instructors only, and all available courses
-
+  - Ability to view more detailed information for instructors and students than in the users tab
+  - Ability to view all available courses
 
 
 ### Student Section
@@ -71,7 +77,7 @@ https://chalkboard-amnaben.herokuapp.com/
 - General functionality (accessed within dummy pages - this will be accessible in a future deliverable)
   - Ability to register for a course
   - Ability to submit assignemnts and view grades
-  - Ability to search for a course within the avaialable courses
+  - Ability to search for a course within the available courses
 
 
 ### Instructor Section

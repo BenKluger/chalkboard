@@ -7,10 +7,13 @@ Website Link: https://chalkboard-amnaben.herokuapp.com/
 - Chapters:
   - Sitemap
 
-- Followed this video to implement Login and registering a user: https://www.youtube.com/watch?v=b91XgdyX-SM
-- Used this video to understand how MongoDB works with Node.js: https://www.youtube.com/watch?v=bxsemcrY4gQ
-- Used this video to understand MongoDB, and used a similar video in the playlist for website jwt user authentication: https://www.youtube.com/watch?v=bxsemcrY4gQ&t=828s
-- Used this video for general backend knowledge: https://www.youtube.com/watch?v=-RCnNyD0L-s&t=1485s
+Followed this video to implement Login and registering a user: https://www.youtube.com/watch?v=b91XgdyX-SM
+
+Used this video to understand how MongoDB works with Node.js: https://www.youtube.com/watch?v=bxsemcrY4gQ
+
+Used this video to understand MongoDB, and used a similar video in the playlist for website jwt user authentication: https://www.youtube.com/watch?v=bxsemcrY4gQ&t=828s
+
+Used this video for general backend knowledge: https://www.youtube.com/watch?v=-RCnNyD0L-s&t=1485s
 
 TODO:
 

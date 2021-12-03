@@ -45,7 +45,7 @@ https://chalkboard-amnaben.herokuapp.com/
 ## Website Functions
 
 Register a user as a student or an admin:
-![image](https://user-images.githubusercontent.com/69221395/144550656-bbfbbd7e-9e91-4afd-86d6-63054adbaf9b.png)
+![image](https://user-images.githubusercontent.com/69221395/144550717-4268f429-97d0-4764-ac90-bd659afa2a59.png)
 
 
 

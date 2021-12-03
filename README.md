@@ -2,6 +2,8 @@
 
 Website Link: https://chalkboard-amnaben.herokuapp.com/
 
+### NOTE: DUMMY PAGES DO NOT HAVE FUNCTIONALITY. THEY WILL BECOME DYNAMIC PAGES IN A LATER DELIVERABLE.
+
 - Chapters:
   - Sitemap
 
@@ -44,8 +46,50 @@ https://chalkboard-amnaben.herokuapp.com/
 
 ## Website Functions
 
-Register a user as a student or an admin:
+### Index Pages
+- Register a user as a student or an instructor (with validation):
 ![image](https://user-images.githubusercontent.com/69221395/144550717-4268f429-97d0-4764-ac90-bd659afa2a59.png)
+
+- Login as a student, instructor, or an admin (with user validation):
+![image](https://user-images.githubusercontent.com/69221395/144550839-1c073cc6-6620-44a6-8db4-7c4a1020711f.png)
+
+
+### Admin Section
+- View all created users and their information (not including passwords)
+- General functionality (accessed within dummy pages - this will be accessible in a future deliverable)
+  - Ability to viewmore detailed information than in the users tab, instructors only, and all available courses
+
+
+
+### Student Section
+- View student's courses
+![image](https://user-images.githubusercontent.com/69221395/144551013-abac43a7-c3cc-4b77-84a8-89f6bbb558df.png)
+
+- View all available courses
+![image](https://user-images.githubusercontent.com/69221395/144551047-994beeab-2557-4da0-973d-e62cd4325605.png)
+
+- General functionality (accessed within dummy pages - this will be accessible in a future deliverable)
+  - Ability to register for a course
+  - Ability to submit assignemnts and view grades
+  - Ability to search for a course within the avaialable courses
+
+
+### Instructor Section
+- View courses that the instructor is registered for
+![image](https://user-images.githubusercontent.com/69221395/144551148-baef8ebd-8647-408f-b343-97e84d4e2fbd.png)
+
+- View all available courses
+![image](https://user-images.githubusercontent.com/69221395/144551190-846cb78c-9c6a-4e0d-8392-0bb6de261e26.png)
+
+- Create a course
+![image](https://user-images.githubusercontent.com/69221395/144551252-d16359a2-a9ed-4d63-9c39-5c08e84ab466.png)
+
+- General functionality (accessed within dummy pages - this will be accessible in a future deliverable)
+  - Ability to edit current courses
+  - Ability to create assignments for a course
+  - Ability to grade submitted assignments, as well as allow resubmission
+  - Ability to accept or reject new students who have signed up for the instructor's course
+  - Ability to search for a course within the avaialable courses
 
 
 

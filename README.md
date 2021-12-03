@@ -36,7 +36,7 @@ Small TODO:
 
 ### Project Link
 
-https://benkluger.github.io/chalkboard/
+https://chalkboard-amnaben.herokuapp.com/
 
 ## Wireframe
 

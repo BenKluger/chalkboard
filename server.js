@@ -94,7 +94,8 @@ app.post('/login', async (req, res) => {
             }else if(usertype == 'admin'){
                 userUrl = '/adminHome'
             }
-            return res.json({ status: 'ok', data: token, url: userUrl });
+            res.cookie('jwt', token, { httpOnly: true })
+            return res.json({ status: 'ok', user: user._id, url: userUrl });
         }
     }
     //if email is correct but password is wrong

@@ -65,7 +65,7 @@
 
         async function loginUser(event){
           event.preventDefault();
-          const email = document.getElementById('email').value;
+          const email = document.getElementById('email').value.toLowerCase();
           const password = document.getElementById('passw').value;
           if(document.querySelector('input[name="User"]:checked') == null){
             alert('Please select a user type');

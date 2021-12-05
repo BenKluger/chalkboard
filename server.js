@@ -2,7 +2,7 @@
 const express = require("express");
 const favicon = require('serve-favicon')
 require("dotenv").config();
-const PORT = process.env.PORT || "80";
+const PORT = process.env.PORT || "8080";
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const User = require("./model/user");
@@ -21,7 +21,6 @@ app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 const dbURI =
   "mongodb+srv://cbUser:chalkUser@chalkboard.youmj.mongodb.net/chalkboard?authSource=admin&replicaSet=atlas-untow0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
-
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,

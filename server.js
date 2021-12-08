@@ -143,6 +143,7 @@ app.post("/login", async (req, res) => {
       } else if (usertype == "admin") {
         userUrl = "/adminHome";
       }
+      console.log('token', token)
       res.cookie("jwt", token, { httpOnly: true });
       res.cookie("usertype", usertype);
       return res.json({ status: "ok", user: user._id, url: userUrl });

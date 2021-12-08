@@ -3,6 +3,8 @@ const express = require("express");
 const favicon = require('serve-favicon')
 require("dotenv").config();
 const PORT = process.env.PORT || "8080";
+const dbURI = process.env.mongodb_URI;
+const JWT_SECRET = process.env.JWT_SECRET;
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const User = require("./model/user");
@@ -11,16 +13,10 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { requireAuth } = require("./middleware/authMiddleware");
 
-const JWT_SECRET =
-  "sdafjlkdsjfljweiojrlsndfk4w5u4usdjfkdsjfkjweijfsdnfndskfnadjfqoeiur343uqr[oj";
-
 // Initialize Express
 const app = express();
-
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
-const dbURI =
-  "mongodb+srv://cbUser:chalkUser@chalkboard.youmj.mongodb.net/chalkboard?authSource=admin&replicaSet=atlas-untow0-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true";
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
@@ -58,7 +54,7 @@ app.get("/adminHome", requireAuth('admin'), function (req, res) {
 });
 
 app.get("/users", requireAuth('admin'), function (req, res) {
-  User.find()
+  User.find().sort({"lastname": 1, "usertype": 1})
     .then((result) => {
       res.render("pages/Admin/usersDB", { users: result });
     })

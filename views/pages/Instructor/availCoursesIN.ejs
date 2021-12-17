@@ -22,9 +22,16 @@
                 </button>
               </div>
               
+
               <table class = "table table-hover">
 
-                <tr>
+                <% courses.forEach(function(course){ %>
+                  <tr>
+                    <td><a href="#"> <%= course.CourseNum %> - <%= course.CourseName %> </a></td>
+                  </tr>
+  
+                <% }); %>
+                <!-- <tr>
                   <td><a href="cs111Example.html">CSCI 111 - Introduction to Algorithmic Problem-Solving</a></td>
                 </tr>
 
@@ -42,7 +49,7 @@
 
                   <tr>
                     <td><a href="#">CSCI 240 - Computer Organization and Assembly Language</a></td>
-                  </tr>
+                  </tr> -->
 
               </table>
 

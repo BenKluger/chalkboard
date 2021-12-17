@@ -8,6 +8,8 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const User = require("./model/user");
+const Course = require("./model/course");
+const Assignment = require("./model/assignment");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
@@ -69,7 +71,13 @@ app.get("/instructorHome", requireAuth('instructor'), function (req, res) {
 });
 
 app.get("/availCoursesIN", requireAuth('instructor'), function (req, res) {
-  res.render("pages/Instructor/availCourses");
+  Course.find().sort({"CourseNum": 1})
+    .then((result) => {
+      res.render("pages/Instructor/availCoursesIN", { courses: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.get("/createCourse", requireAuth('instructor'), function (req, res) {
@@ -187,4 +195,33 @@ app.post("/register", async (req, res) => {
   }
   // console.log('User created successfully:', response)
   res.json({ status: "ok", url: "/login" });
+});
+
+///////////////////////////////// Create a course POST Method ///////////////////////////
+app.post("/newCourse", async (req, res) => {
+  const {
+    CourseNum,
+    CourseName,
+    CourseCredits,
+    CourseDescription,
+    CourseMaterials,
+    Instructors
+  } = req.body;
+
+  var CourseID = Date.now();
+  try {
+    const response = await Course.create({
+      CourseNum,
+      CourseName,
+      CourseID,
+      CourseCredits,
+      CourseDescription,
+      CourseMaterials,
+      Instructors
+    });
+    console.log("Course created successfully: ", response);
+  } catch (error) {
+    console.log(error)
+  }
+  res.json({ status: "ok", url: "/availCoursesIN" });
 });

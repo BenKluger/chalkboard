@@ -11,7 +11,7 @@
         <div>
           <%- include('../../partials/_top-nav') %>
             <h1>Create a Course</h1>
-            <form>
+            <form id="createCourse">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="courseName">Course Name</label><br>
@@ -46,8 +46,12 @@
                     <label for="description">Course Description</label><br>
                     <textarea name="description" id="description" rows="10" cols="50" placeholder="Describe the course" class="form-control"></textarea>
                 </div>
+                <div class="form-row">
+                  <label for="materials">Course Materials</label><br>
+                  <textarea name="materials" id="materials" rows="10" cols="50" placeholder="Textbook, calculator..." class="form-control"></textarea>
+              </div>
 
-                <button class="btn btn-info float-right">Publish Course</button>
+                <button class="btn btn-info float-right" type="submit">Publish Course</button>
                 
               
               <!-- Consider putting this in if easy.
@@ -68,16 +72,45 @@
 
     </div>
     <%- include('../../partials/_scripts') %>
-    <!-- <script>
-      $(document).ready(function () {
-        $("#sidebarCollapse").on("click", function () {
-          $("#sidebar").toggleClass("active");
-          $(".logo").toggleClass("active");
-        });
-        $("#sidebarCollapse").on("click", function showImage() {
-          $(".logo").toggle();
-        });
-      });
-    </script> -->
+
+    <script>
+    const courseForm = document.getElementById('createCourse');
+     courseForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        createCourse(event);
+        
+    })
+        async function createCourse(event){
+          event.preventDefault();
+          const CourseName = document.getElementById('courseName').value;
+          const CourseNum = document.getElementById('classNum').value;
+          const a = document.getElementById("credits");
+          const CourseCredits = a.options[a.selectedIndex].value;
+          const Instructors = document.getElementById('Instructors').value;
+          const CourseDescription = document.getElementById('description').value;
+          const CourseMaterials = document.getElementById('materials').value;
+         
+          const result = await fetch('/newCourse', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              CourseNum,
+              CourseName,
+              CourseCredits,
+              CourseDescription,
+              CourseMaterials,
+              Instructors
+            })
+          }).then((res) => res.json())
+            console.log(result);
+            if(result.error){
+              alert(result.error);
+            }
+            window.location.href = result.url;
+        }
+      </script>
+    
   </body>
 </html>

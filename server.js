@@ -80,6 +80,32 @@ app.get("/availCoursesIN", requireAuth('instructor'), function (req, res) {
     });
 });
 
+app.post("/coursedetailsIN", (req, res) => {
+  const { CourseID } = req.body;
+  res.json({ status: "ok", url: `/coursedetailsIN/${CourseID}`, CourseID: CourseID });
+});
+
+app.get("/coursedetailsIN/:course", requireAuth('instructor'), function (req, res){
+  let input = req.params.course;
+  Course.findOne({ CourseID: input})
+    .then((result) => {
+      res.render("pages/Instructor/courseXpage", { course: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+app.get("/updateCourse/:course", requireAuth('instructor'), function (req, res) {
+  let input = req.params.course;
+  Course.findOne({ CourseID: input})
+    .then((result) => {
+      res.render("pages/Instructor/filledCourse", { course: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 app.get("/createCourse", requireAuth('instructor'), function (req, res) {
   res.render("pages/Instructor/createCourse");
 });
@@ -225,3 +251,58 @@ app.post("/newCourse", async (req, res) => {
   }
   res.json({ status: "ok", url: "/availCoursesIN" });
 });
+
+
+app.post("/editCourse", async (req, res) => {
+  const {
+    CourseID,
+    CourseNum,
+    CourseName,
+    CourseCredits,
+    CourseDescription,
+    CourseMaterials,
+    Instructors
+  } = req.body;
+
+  // var CourseID = "61bcf712b3daa1ed3271b82e";
+  console.log(CourseID)
+  try {
+
+    Course.updateOne({"_id": CourseID}, {
+      "CourseNum": CourseNum,
+      "CourseName": CourseName,
+      "CourseCredits": CourseCredits,
+      "CourseDescription": CourseDescription,
+      "CourseMaterials": CourseMaterials,
+      "Instructors": Instructors
+    }, function(err, result){
+      if(err){
+        res.send(err)
+      }
+      else{
+        console.log("Course updated successfully: ", result);
+      }
+    })
+
+    // const response = await Course.findByIdAndUpdate({CourseID},{
+    //   "CourseNum": CourseNum,
+    //   "CourseName": CourseName,
+    //   "CourseCredits": CourseCredits,
+    //   "CourseDescription": CourseDescription,
+    //   "CourseMaterials": CourseMaterials,
+    //   "Instructors": Instructors
+    // }, function(err, result){
+    //   if(err){
+    //     res.send(err)
+    //   }
+    //   else{
+    //     console.log("Course updated successfully: ", result);
+    //   }
+    // })
+    
+  } catch (error) {
+    console.log(error)
+  }
+  res.json({ status: "ok", url: "/availCoursesIN" });
+});
+

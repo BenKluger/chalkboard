@@ -112,10 +112,6 @@ span {
   margin-top: 10px;
 }
 
-/* .headshot {
-  float: left;
-} */
-
 .login img {
   width: 30%;
 }
@@ -329,19 +325,39 @@ a img.logo {
   transition: all 0.3s;
 }
 
-/* .contentMargin {
-  width: auto;
-}
-
-.contentMargin:hover {
-  background-color: red;
-} */
-
 .contentMargin a {
   padding-top: 2rem;
   padding-right: 40%;
   padding-bottom: 2rem;
 }
+
+
+/* ---------------------------------------------------
+   COURSE MANAGEMENT STYLES
+----------------------------------------------------- */
+
+.inline {
+  display: inline;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.05em;
+  color:  #2a2f1f;
+}
+.link-button:focus {
+  outline: none;
+}
+.link-button:hover {
+  color: #89ab67;
+  transition: all 0.3s;
+}
+
+
+
 
 /* ---------------------------------------------------
     MEDIAQUERIES

@@ -10,21 +10,21 @@
       <div id="content">
         <div>
           <%- include('../../partials/_top-nav') %>
-            <h1>Create a Course</h1>
+            <h1>Edit Course</h1>
             <form id="createCourse">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="courseName">Course Name</label><br>
-                        <input type="text" id="courseName" name="courseName" placeholder="Discrete Structures" class="form-control">
+                        <input type="text" id="courseName" name="courseName" value="<%= course.CourseName %>" class="form-control">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="classNum">Class Number</label><br>
-                        <input type="text" id="classNum" name="classNum" placeholder="CSCI 220" class="form-control">
+                        <input type="text" id="classNum" name="classNum" value="<%= course.CourseNum %>" class="form-control">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="credits">Credits</label>
                         <select id="credits" class="form-control">
-                          <option selected>Choose...</option>
+                          <option selected value="<%= course.CourseCredits %>"><%= course.CourseCredits %></option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -37,21 +37,22 @@
                 <div class="form-row">
                     
                     <div class="form-group col-md-10">
-                        <label for="Instructors">Instructors <i>(Comma Separated List)</i></label><br> 
-                        <input type="text" id="Instructors" name="Instructors" placeholder="Maxwell White" class="form-control">
+                        <label for="Instructors">Instructors <i>(Comma Separated List)</i></label><br>
+                        <input type="text" id="Instructors" name="Instructors" value="<%= course.Instructors %>" class="form-control">
                     </div>
 
                 </div>
                 <div class="form-row">
                     <label for="description">Course Description</label><br>
-                    <textarea name="description" id="description" rows="10" cols="50" placeholder="Describe the course" class="form-control"></textarea>
+                    <textarea name="description" id="description" rows="10" cols="50" class="form-control"><%= course.CourseDescription %></textarea>
                 </div>
                 <div class="form-row">
                   <label for="materials">Course Materials</label><br>
-                  <textarea name="materials" id="materials" rows="2" cols="50" placeholder="Textbook, calculator..." class="form-control"></textarea>
+                  <textarea name="materials" id="materials" rows="2" cols="50" class="form-control"><%= course.CourseMaterials %></textarea>
               </div>
-
-                <button class="btn btn-info float-right" type="submit">Publish Course</button>
+              <!-- <div class="courseid" hidden></div> -->
+              <input type="text" id="courseid" value="<%= course._id %>" class="form-control" hidden>
+                <button class="btn btn-info float-right" type="submit">Save Changes</button>
                 
               
               <!-- Consider putting this in if easy.
@@ -77,11 +78,13 @@
     const courseForm = document.getElementById('createCourse');
      courseForm.addEventListener('submit', function(event) {
         event.preventDefault();
-        createCourse(event);
+        updateCourse(event);
         
     })
-        async function createCourse(event){
+        async function updateCourse(event){
           event.preventDefault();
+          const CourseID = document.getElementById("courseid").value;
+          console.log(CourseID);
           const CourseName = document.getElementById('courseName').value;
           const CourseNum = document.getElementById('classNum').value;
           const a = document.getElementById("credits");
@@ -90,12 +93,13 @@
           const CourseDescription = document.getElementById('description').value;
           const CourseMaterials = document.getElementById('materials').value;
          
-          const result = await fetch('/newCourse', {
+          const result = await fetch('/editCourse', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+              CourseID,
               CourseNum,
               CourseName,
               CourseCredits,

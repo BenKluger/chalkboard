@@ -63,4 +63,6 @@ const CourseSchema = new mongoose.Schema(
 )
 
 const modelCourse = mongoose.model('CourseSchema', CourseSchema);
+// const assignmentCourse = mongoose.model('assignmentSchema', assignmentSchema);
+// module.exports = assignmentCourse;
 module.exports = modelCourse;

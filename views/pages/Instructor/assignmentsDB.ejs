@@ -22,7 +22,9 @@
                 </tr>
                 <% course.assignments.forEach(function(assignment){ %>
                   <tr><td>
-                    <%= assignment.assignmentName%>
+                    <button type="submit" onClick= "selectedCourse()" class="link-button" value="<%= assignment.assignmentId %>" id = "<%= assignment.assignmentId  %>"> <!--name="submit_param" value="submit_value"-->
+                      <%= assignment.assignmentName%>
+                    </button>
                   </td></tr>
                 <% }); %>
 
@@ -32,5 +34,29 @@
       </div>
 
     </div>
+    <%- include('../../partials/_scripts') %>
+    <script>
+
+      async function selectedCourse(){
+          event.preventDefault();
+          const assignmentId = event.srcElement.id;
+          const result = await fetch('/assignXpage', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              assignmentId
+            })
+          }).then((res) => res.json())
+            // console.log(result);
+            if(result.error){
+              alert(result.error);
+            }
+            window.location.href = result.url;
+        }
+
+      
+    </script>
   </body>
 </html>

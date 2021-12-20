@@ -108,7 +108,7 @@ app.get("/coursePageIN/:course", requireAuth('instructor'), function (req, res){
 
 //////////////////////////////////// Assignments Dashboard Instructors View
 
-app.get("/assignmentsPage", function (req, res){
+app.get("/assignmentsPage", requireAuth('instructor'),function (req, res){
   let course = req.cookies.courseid;
   Course.findOne({ CourseID: course})
     .then((result) => {
@@ -119,7 +119,7 @@ app.get("/assignmentsPage", function (req, res){
     });
 })
 
-app.get("/createAssignment", function (req, res){
+app.get("/createAssignment", requireAuth('instructor'),function (req, res){
   let course = req.cookies.courseid;
   Course.findOne({ CourseID: course})
     .then((result) => {
@@ -141,7 +141,6 @@ app.post("/createAssign", async (req, res) => {
   console.log('questions', questions)
   try {
     const response = await Course.findOne({CourseID: course})
-    // console.log(response)
     response.assignments.push({
         assignmentId,
         assignmentName,
@@ -156,6 +155,26 @@ app.post("/createAssign", async (req, res) => {
   res.json({ status: "ok", url: "/assignmentsPage" });
 });
 
+/////////////////////////////////////// Page for each specific assignment page in instructor view
+
+app.post("/assignXpage", (req, res) => {
+  const { assignmentId } = req.body;
+  res.json({ status: "ok", url: `/assignXpage/${assignmentId}`, assignmentId: assignmentId });
+});
+/////////////////////////////////////////// FIGURE OUT HOW TO GET THE ASSIGNMENT OBJECT FROM COURSE
+app.get("/assignXpage/:assign", requireAuth('instructor'), function (req, res){
+  let input = req.params.assign;
+  // let course = req.cookies.courseid;
+  console.log('input', input)
+  Course.findOne({"Course.assignments": { assignmentId: input}})
+    .then((result) => {
+      console.log(result)
+      res.render("pages/Instructor/assignmentXpage", { assign: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 //////////////// Course Description Page for all available courses
 app.post("/coursedetailsIN", (req, res) => {
   const { CourseID } = req.body;

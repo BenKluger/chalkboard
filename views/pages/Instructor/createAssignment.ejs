@@ -13,21 +13,21 @@
 
             <h1><%= course.CourseNum%> - <%= course.CourseName%></h1>
             
-            <form id="allQA">
+            <form id="allQA" >
                 <label for="assignmentname">Assignment Name</label><br>
-                <input type="text" id="classNum" name="assignmentname" class="form-control" id="assignmentName" value="Assignment 1">
+                <input type="text" name="assignmentname" class="form-control" id="assignmentName">
                 <div class="form-row" id="qaForm">
                     <div class="line"></div>
                     <label for="question">Question</label><br>
-                    <textarea name="question" rows="2" cols="50"  class="form-control question">Question</textarea>
+                    <textarea name="question" rows="2" cols="50"  class="form-control question"></textarea>
                     <label for="ans">Answer</label><br>
-                    <textarea name="ans" rows="2" cols="50"  class="form-control answer">Answers may vary</textarea>
+                    <textarea name="ans" rows="2" cols="50"  class="form-control answer"></textarea>
                 </div>
                 
             </form>
             <div class="line"></div>
-            <button class="btn btn-info" id="addQA" onclick="createnewQA()">Add a Question</button> 
-            <button class="btn btn-info" id="removeQA" onclick="removeQA()">Delete Question</button> 
+            <button class="btn btn-info" id="addQA" onclick="createnewQA()" onsubmit="return false">Add a Question</button> 
+            <button class="btn btn-info" id="removeQA" onclick="removeQA()" onsubmit="return false">Delete Question</button> 
             <button class="btn btn-info" type="submit" id="createAssignBtn" onclick="createAssignment()">Publish Assignment</button> 
         </div>
         <%- include('../../partials/_footer') %>
@@ -37,28 +37,35 @@
     <%- include('../../partials/_scripts') %>
     <script>
         function createnewQA(){
+            event.preventDefault();
             let qadiv = '<div class="form-row" id="qaForm"><div class="line"></div><label for="question">Question</label><br><textarea name="question" rows="2" cols="50"  class="form-control question"></textarea><label for="ans">Answer</label><br><textarea name="ans" rows="2" cols="50"  class="form-control answer"></textarea></div>';
             let questionForm = document.getElementById("allQA");
-            console.log(questionForm)
-            questionForm.innerHTML += qadiv;
-            console.log(questionForm)
+            questionForm.insertAdjacentHTML('beforeend', qadiv);
         }
 
         function removeQA(){
+            event.preventDefault();
             var x = document.getElementById("allQA")
             x.removeChild(x.lastChild)
         }
 
         async function createAssignment(){
           event.preventDefault();
-          const assignmentName = document.getElementById('assignmentName');
-          const questionObject = Array.from(document.getElementsByClassName('question'));
-        // const questions = questionObject.forEach((question)=>{
-        //     question.value
-        // })
-        //   Array.from(questionObject)
-          alert(questions)
-          const answers = document.getElementsByClassName('answer');
+          const assignmentName = document.getElementById('assignmentName').value;
+          const questionObject = document.getElementsByClassName('question');
+          const questions = [];
+          if(questionObject.length > 0){
+            for(let i = 0; i < questionObject.length; i++){
+                questions.push(questionObject[i].value)
+            }
+          } 
+          const answerObject = document.getElementsByClassName('answer');
+          const answers = [];
+          if(answerObject.length > 0){
+            for(let i = 0; i < answerObject.length; i++){
+                answers.push(answerObject[i].value)
+            }
+          } 
          
           const result = await fetch('/createAssign', {
             method: 'POST',

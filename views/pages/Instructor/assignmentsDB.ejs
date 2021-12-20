@@ -13,45 +13,25 @@
 
 
             <h1>CSCI 220 Assignments</h1>
+            <div class="text-center">
+              <a href="/createAssignment" class="btn btn-info">Create New Assignment</a>
+              <!-- <button type="button" class="btn btn-info"></button> -->
+            </div>
             <table class="table">
                 <tr>
-                    <th>Name</th>
-                    <th>Due Date</th>
+                    <th>Assignment Name</th>
                 </tr>
-                <tr>
-                    <td><a href="algorithmAssignment.html">Solve this algorithm</a></td>
-                    <td>11/30/2021</td>
-                </tr>
-                <tr>
-                    <td>Solve this recurrence</td>
-                    <td>12/05/2021</td>
-                </tr>
-                <tr>
-                    <td>Solve this relation</td>
-                    <td>12/10/2021</td>
-                </tr>
+                <% course.assignments.forEach(function(assignment){ %>
+                  <tr><td>
+                    <%= assignment.assignmentName%>
+                  </td></tr>
+                <% }); %>
+
             </table>
-
-
-
         </div>
-
-
-        <%- include('../partials/_footer') %>
+        <%- include('../../partials/_footer') %>
       </div>
 
     </div>
-    <%- include('../../partials/_scripts') %>
-    <!-- <script>
-      $(document).ready(function () {
-        $("#sidebarCollapse").on("click", function () {
-          $("#sidebar").toggleClass("active");
-          $(".logo").toggleClass("active");
-        });
-        $("#sidebarCollapse").on("click", function showImage() {
-          $(".logo").toggle();
-        });
-      });
-    </script> -->
   </body>
 </html>

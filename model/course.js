@@ -1,6 +1,29 @@
 const mongoose = require('mongoose');
 
 // const assignmentSchema = require("/assignment");
+const assignmentSchema = new mongoose.Schema(
+    {
+        assignmentId: {
+            type: String,
+            required: true,
+            unique: true
+        },
+        assignmentName: {
+            type: String,
+            required: true,
+        },
+        questions: {
+            type: [String],
+        },
+        answers: {
+            type: [String],
+        }
+    },
+    {
+        timestamps: true,
+        collection: 'assignments'
+    }
+)
 
 const CourseSchema = new mongoose.Schema(
     {
@@ -32,7 +55,8 @@ const CourseSchema = new mongoose.Schema(
             type: [String],
             required: true
         },
-        // assignments: [assignmentSchema]
+        Students: [String],
+        assignments: [assignmentSchema]
     },
     {   timestamps: true,
         collection: 'courses' }

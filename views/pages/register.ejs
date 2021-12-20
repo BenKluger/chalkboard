@@ -181,6 +181,7 @@
           event.preventDefault();
           const firstname = document.getElementById('fname').value;
           const lastname = document.getElementById('lname').value;
+          const fullname = `${firstname} ${lastname}`;
           const email = document.getElementById('email').value;
           const password = document.getElementById('passw').value;
           const repassword = document.getElementById('repassw').value;
@@ -194,6 +195,7 @@
             body: JSON.stringify({
               firstname,
               lastname,
+              fullname,
               email,
               password,
               repassword,

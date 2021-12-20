@@ -67,7 +67,14 @@ app.get("/users", requireAuth('admin'), function (req, res) {
 
 ///////////////////////////// INSTRUCTOR ROUTES
 app.get("/instructorHome", requireAuth('instructor'), function (req, res) {
-  res.render("pages/Instructor/instructorHomePage");
+  let userfullname = req.cookies.fullname;
+  Course.find({Instructors: userfullname})
+    .then((result) => {
+      res.render("pages/Instructor/instructorHomePage", { courses: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 app.get("/availCoursesIN", requireAuth('instructor'), function (req, res) {
@@ -80,6 +87,44 @@ app.get("/availCoursesIN", requireAuth('instructor'), function (req, res) {
     });
 });
 
+
+////////////////// Course pages specifically for My Courses
+app.post("/coursePageIN", (req, res) => {
+  const { CourseID } = req.body;
+  res.json({ status: "ok", url: `/coursePageIN/${CourseID}`, CourseID: CourseID });
+});
+
+app.get("/coursePageIN/:course", requireAuth('instructor'), function (req, res){
+  let input = req.params.course;
+  res.cookie("courseid", input);
+  Course.findOne({ CourseID: input})
+    .then((result) => {
+      res.render("pages/Instructor/coursePageIN", { course: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+//////////////////////////////////// Assignments Dashboard Instructors View
+
+app.get("/assignmentsPage", function (req, res){
+  let course = req.cookies.courseid;
+  Course.findOne({ CourseID: course})
+    .then((result) => {
+      res.render("pages/Instructor/assignmentsDB", { course: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+})
+
+app.get("/createAssignment", function (req, res){
+  res.render("pages/Instructor/createAssignment")
+})
+
+
+//////////////// Course Description Page for all available courses
 app.post("/coursedetailsIN", (req, res) => {
   const { CourseID } = req.body;
   res.json({ status: "ok", url: `/coursedetailsIN/${CourseID}`, CourseID: CourseID });
@@ -124,11 +169,13 @@ app.get("/studentHome", requireAuth('student'), function (req, res) {
 app.get("/login", function (req, res) {
     res.cookie("jwt", "", { maxAge: 1 });
     res.cookie("usertype", "", { maxAge: 1 });
+    res.cookie("fullname", "", { maxAge: 1 });
     res.render("pages/login");
 });
 app.get("/register", function (req, res) {
     res.cookie("jwt", "", { maxAge: 1 });
     res.cookie("usertype", "", { maxAge: 1 });
+    res.cookie("fullname", "", { maxAge: 1 });
     res.render("pages/register");
 });
 
@@ -136,6 +183,7 @@ app.get("/register", function (req, res) {
 app.get("/logout", (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 }); //overwrite the current jwt
   res.cookie("usertype", "", { maxAge: 1 });
+  res.cookie("fullname", "", { maxAge: 1 });
   res.redirect("/");
 });
 
@@ -143,6 +191,7 @@ app.get("/logout", (req, res) => {
 app.get("/", function (req, res) {
     res.cookie("jwt", "", { maxAge: 1 });
     res.cookie("usertype", "", { maxAge: 1 });
+    res.cookie("fullname", "", { maxAge: 1 });
     res.render("pages/index");
 });
 
@@ -177,9 +226,14 @@ app.post("/login", async (req, res) => {
       } else if (usertype == "admin") {
         userUrl = "/adminHome";
       }
+      
+      console.log(user)
+      const userfullName = user.fullname;
+      console.log(userfullName);
       console.log('token', token)
       res.cookie("jwt", token, { httpOnly: true });
       res.cookie("usertype", usertype);
+      res.cookie("fullname", userfullName);
       return res.json({ status: "ok", user: user._id, url: userUrl });
     }
   } 
@@ -195,6 +249,7 @@ app.post("/register", async (req, res) => {
   const {
     firstname,
     lastname,
+    fullname,
     email,
     password: plainTextPassword,
     usertype,
@@ -205,6 +260,7 @@ app.post("/register", async (req, res) => {
     const response = await User.create({
       firstname,
       lastname,
+      fullname,
       email,
       password,
       usertype,
@@ -264,7 +320,6 @@ app.post("/editCourse", async (req, res) => {
     Instructors
   } = req.body;
 
-  // var CourseID = "61bcf712b3daa1ed3271b82e";
   console.log(CourseID)
   try {
 
@@ -283,22 +338,6 @@ app.post("/editCourse", async (req, res) => {
         console.log("Course updated successfully: ", result);
       }
     })
-
-    // const response = await Course.findByIdAndUpdate({CourseID},{
-    //   "CourseNum": CourseNum,
-    //   "CourseName": CourseName,
-    //   "CourseCredits": CourseCredits,
-    //   "CourseDescription": CourseDescription,
-    //   "CourseMaterials": CourseMaterials,
-    //   "Instructors": Instructors
-    // }, function(err, result){
-    //   if(err){
-    //     res.send(err)
-    //   }
-    //   else{
-    //     console.log("Course updated successfully: ", result);
-    //   }
-    // })
     
   } catch (error) {
     console.log(error)

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_iside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <h1>Course Name</h1>
+            
+            <form id="allQA">
+                <div class="form-row" id="qaForm">
+                    <div class="line"></div>
+                    <label for="question">Question</label><br>
+                    <textarea name="question" rows="2" cols="50"  class="form-control question"></textarea>
+                    <label for="ans">Answer</label><br>
+                    <textarea name="ans" rows="2" cols="50"  class="form-control answer"></textarea>
+                </div>
+                
+            </form>
+            <div class="line"></div>
+            <button class="btn btn-info" id="addQA" onclick="createnewQA()">Add a Question</button> 
+            <button class="btn btn-info" id="removeQA" onclick="removeQA()">Delete Question</button> 
+            <button class="btn btn-info">Publish Assignment</button> 
+        </div>
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+    <%- include('../../partials/_scripts') %>
+    <script>
+        function createnewQA(){
+            let qadiv = '<div class="form-row" id="qaForm"><div class="line"></div><label for="question">Question</label><br><textarea name="question" rows="2" cols="50"  class="form-control question"></textarea><label for="ans">Answer</label><br><textarea name="ans" rows="2" cols="50"  class="form-control answer"></textarea></div>';
+            // document.getElementById("qaForm");
+            let questionForm = document.getElementById("allQA");
+            console.log(questionForm)
+            questionForm.innerHTML += qadiv;
+            console.log(questionForm)
+        }
+
+        function removeQA(){
+            var x = document.getElementById("allQA")
+            x.removeChild(x.lastChild)
+        }
+
+        
+    </script>
+  </body>
+</html>

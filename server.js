@@ -120,9 +120,41 @@ app.get("/assignmentsPage", function (req, res){
 })
 
 app.get("/createAssignment", function (req, res){
-  res.render("pages/Instructor/createAssignment")
+  let course = req.cookies.courseid;
+  Course.findOne({ CourseID: course})
+    .then((result) => {
+      res.render("pages/Instructor/createAssignment", { course: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 })
 
+app.post("/createAssign", async (req, res) => {
+  const {
+    assignmentName,
+    questions,
+    answers
+  } = req.body;
+  var assignmentId = Date.now();
+  let course = req.cookies.courseid;
+  console.log('questions', questions)
+  try {
+    const response = await Course.findOne({CourseID: course})
+    // console.log(response)
+    response.assignments.push({
+        assignmentId,
+        assignmentName,
+        questions,
+        answers
+      })
+    await response.save();
+    console.log("Assignment created successfully: ", response);
+  } catch (error) {
+    console.log(error)
+  }
+  res.json({ status: "ok", url: "/assignmentsPage" });
+});
 
 //////////////// Course Description Page for all available courses
 app.post("/coursedetailsIN", (req, res) => {

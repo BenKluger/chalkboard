@@ -11,22 +11,24 @@
           <div>
             <%- include('../../partials/_top-nav') %>
 
-            <h1>Course Name</h1>
+            <h1><%= course.CourseNum%> - <%= course.CourseName%></h1>
             
             <form id="allQA">
+                <label for="assignmentname">Assignment Name</label><br>
+                <input type="text" id="classNum" name="assignmentname" class="form-control" id="assignmentName" value="Assignment 1">
                 <div class="form-row" id="qaForm">
                     <div class="line"></div>
                     <label for="question">Question</label><br>
-                    <textarea name="question" rows="2" cols="50"  class="form-control question"></textarea>
+                    <textarea name="question" rows="2" cols="50"  class="form-control question">Question</textarea>
                     <label for="ans">Answer</label><br>
-                    <textarea name="ans" rows="2" cols="50"  class="form-control answer"></textarea>
+                    <textarea name="ans" rows="2" cols="50"  class="form-control answer">Answers may vary</textarea>
                 </div>
                 
             </form>
             <div class="line"></div>
             <button class="btn btn-info" id="addQA" onclick="createnewQA()">Add a Question</button> 
             <button class="btn btn-info" id="removeQA" onclick="removeQA()">Delete Question</button> 
-            <button class="btn btn-info">Publish Assignment</button> 
+            <button class="btn btn-info" type="submit" id="createAssignBtn" onclick="createAssignment()">Publish Assignment</button> 
         </div>
         <%- include('../../partials/_footer') %>
       </div>
@@ -36,7 +38,6 @@
     <script>
         function createnewQA(){
             let qadiv = '<div class="form-row" id="qaForm"><div class="line"></div><label for="question">Question</label><br><textarea name="question" rows="2" cols="50"  class="form-control question"></textarea><label for="ans">Answer</label><br><textarea name="ans" rows="2" cols="50"  class="form-control answer"></textarea></div>';
-            // document.getElementById("qaForm");
             let questionForm = document.getElementById("allQA");
             console.log(questionForm)
             questionForm.innerHTML += qadiv;
@@ -48,6 +49,34 @@
             x.removeChild(x.lastChild)
         }
 
+        async function createAssignment(){
+          event.preventDefault();
+          const assignmentName = document.getElementById('assignmentName');
+          const questionObject = Array.from(document.getElementsByClassName('question'));
+        // const questions = questionObject.forEach((question)=>{
+        //     question.value
+        // })
+        //   Array.from(questionObject)
+          alert(questions)
+          const answers = document.getElementsByClassName('answer');
+         
+          const result = await fetch('/createAssign', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              assignmentName,
+              questions,
+              answers
+            })
+          }).then((res) => res.json())
+            console.log(result);
+            if(result.error){
+              alert(result.error);
+            }
+            window.location.href = result.url;
+        }
         
     </script>
   </body>

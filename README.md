@@ -110,6 +110,9 @@ https://chalkboard-amnaben.herokuapp.com/
 
 ## Wireframe
 
+Difference between wireframe/sitemap and final website structure:
+  Overall they were much the same, with few differences - namely, an extra one or two intermediary pages between two sections of the website, such as going between "My Courses" to finally creating an assignment.
+
 ###### Desktop:
 
 A "Sign up" page was not included in the wireframe, but will be included in the actual website.

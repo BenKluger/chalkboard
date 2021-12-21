@@ -11,15 +11,16 @@
           <div>
             <%- include('../../partials/_top-nav') %>
 
-            <h2 class="assignName"><%= assign.CourseNum %> - <%= assign.assignments[0].assignmentName %> Assignment</h2>
+            <h2 class="assignName" id="asssignName"><%= assign.CourseNum %> - <%= assign.assignments[index].assignmentName %></h2>
             <a href="/assignmentsPage"><i class="fas fa-undo-alt"></i> All Assignments</a>
+            <button class="btn btn-info float-right" onclick="viewSubmissions()" id="<%= assign.assignments[index].assignmentId %>">View Student Submissions</button>
             <div id="allQA" >
                 <div>
-                    <% for(let i = 0; i < assign.assignments[0].questions.length; i++){ %>
+                    <% for(let i = 0; i < assign.assignments[index].questions.length; i++){ %>
                         <div class="line"></div>
                         <h5>Question <%= [i+1] %> </h5>
-                        <div>Q: <%= assign.assignments[0].questions[i] %></div>
-                        <div>A: <%= assign.assignments[0].answers[i] %></div>
+                        <div>Q: <%= assign.assignments[index].questions[i] %></div>
+                        <div>A: <%= assign.assignments[index].answers[i] %></div>
                     <% }; %> 
                 </div>
                 
@@ -31,5 +32,25 @@
 
     </div>
     <%- include('../../partials/_scripts') %>
+    <script>
+      async function viewSubmissions(){
+        event.preventDefault();
+        // const courseName = document.getElementById('asssignName').nodeValue
+        const assignmentID = event.srcElement.id;
+        const result = await fetch('/viewSubmissions', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            assignmentID
+          })
+        }).then((res) => res.json())
+          if(result.error){
+            alert(result.error);
+          }
+          window.location.href = result.url;
+      }
+    </script>
   </body>
 </html>

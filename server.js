@@ -188,6 +188,53 @@ app.post("/createAssign", async (req, res) => {
   res.json({ status: "ok", url: "/assignmentsPage" });
 });
 
+/////////////////////////View Submissions
+
+app.post("/submissionXpage", (req, res) => {
+  const { submissionID } = req.body;
+  res.json({ status: "ok", url: `/submissionXpage/${submissionID}`});
+});
+app.get("/submissionXpage/:submissionx", requireAuth('instructor'), function (req, res){
+  let submissionID = req.params.submissionx;
+  console.log('input', submissionID)
+  Submission.find({submissionID: input})
+    .then((result) => {
+      console.log(result)
+      res.render("pages/Instructor/assignmentXsubmissions", {  submission: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    
+});
+/////////////////////////////View Assignment Submissions
+app.post("/viewSubmissions", (req, res) => {
+  const { assignmentID } = req.body;
+    console.log('assignmentID', assignmentID)
+  res.json({ status: "ok", url: `/viewSubmissions/${assignmentID}`});
+});
+app.get("/viewSubmissions/:assignment", requireAuth('instructor'), function (req, res){
+  let input = req.params.assignment;
+  console.log('input', input)
+  Submission.find({assignmentID: input})
+    .then((result) => {
+      console.log(result)
+      console.log(result[0].status)
+      if(result[0].status == 'Submitted'){
+        res.render("pages/Instructor/assignmentXsubmissions", { submission: result });
+      }
+      else{
+        res.render("pages/Instructor/assignmentXsubmissionsNone")
+      }
+      
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  // Course.findOne({'assignments.assignmentId': input}, {_id: 0, assignments: {$elemMatch: { assignmentId: '1'}}, CourseNum: 1, assignments: 1})
+    
+});
+
 /////////////////////////////////////// Page for each specific assignment page in instructor view
 
 app.post("/assignXpage", (req, res) => {
@@ -196,17 +243,39 @@ app.post("/assignXpage", (req, res) => {
 });
 app.get("/assignXpage/:assign", requireAuth('instructor'), function (req, res){
   let input = req.params.assign;
-  // let course = req.cookies.courseid;
   console.log('input', input)
   Course.findOne({'assignments.assignmentId': input}, {_id: 0, assignments: {$elemMatch: { assignmentId: '1'}}, CourseNum: 1, assignments: 1})
     .then((result) => {
       console.log(result)
-      res.render("pages/Instructor/assignmentXpage", { assign: result });
+      const indexx = result.assignments.findIndex(function (assignment) {
+        return assignment.assignmentId == input;
+      })
+      res.render("pages/Instructor/assignmentXpage", { assign: result, index: indexx });
     })
     .catch((err) => {
       console.log(err);
     });
 });
+// app.get("/assignXpage/:assign", requireAuth('instructor'), function (req, res){
+//   let input = req.params.assign;
+//   // let course = req.cookies.courseid;
+//   console.log('input', input)
+  
+//   Course.findOne({'assignments.assignmentId': input}, {_id: 0, assignments: {$elemMatch: { assignmentId: '1'}}, CourseNum: 1, assignments: 1})
+//     .then((result) => {
+//       console.log(result)
+//       const results = result.assignments.find(function(post, index) {
+//         if(post.assignmentId == input)
+//           return post[index];
+//       });
+//       // result.find
+//       console.log(results)
+//       res.render("pages/Instructor/assignmentXpage", { assign: results });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
 //////////////// Course Description Page for all available courses
 app.post("/coursedetailsIN", (req, res) => {
   const { CourseID } = req.body;

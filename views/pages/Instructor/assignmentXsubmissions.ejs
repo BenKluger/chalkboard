@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_iside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <div class = "contentMargin">
+              <h1>Assignment Submissions</h1>
+              <a href="/assignmentsPage"><i class="fas fa-undo-alt"></i> Return to All Assignments</a>
+              <table class = "table table-hover">
+                <form method="post"  class="inline" id="pickedCourse">
+                    <tr>
+                        <th>Student Name</th>
+                    </tr>
+                  <% submission.forEach(function(submissionx){ %>
+                    <tr>
+                      <td>
+                        <button type="submit" onClick= "selectedStudent()" class="link-button"  id = "<%= submissionx.submissionID %>">
+                          <%= submissionx.username %>
+                        </button>
+                      </td>
+                    </tr>
+                  <% }); %>
+                </form>
+              </table>
+            </div>
+        </div>
+        <%- include('../../partials/_footer') %>
+      </div>
+    </div>
+    <%- include('../../partials/_scripts') %>
+
+    <script>
+      async function selectedStudent(){
+          event.preventDefault();
+          const submissionID = event.srcElement.id;
+          console.log(CourseID)
+          const result = await fetch('/submissionXpage', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              submissionID
+            })
+          }).then((res) => res.json())
+            if(result.error){
+              alert(result.error);
+            }
+            window.location.href = result.url;
+        }
+    </script>
+  </body>
+</html>

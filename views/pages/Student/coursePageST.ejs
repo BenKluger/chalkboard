@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_stside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <h1><%= course.CourseNum %></h1>  
+            <h2>Course Name</h2>
+            <p><%= course.CourseName %></p>
+            <h2>Instructors</h2>
+            <p><%= course.Instructors%></p>
+            <h2>Course Description</h2>
+            <p><%= course.CourseDescription %></p>
+            <h2>Course Materials</h2>
+            <p><%= course.CourseMaterials %></p>
+            <h2><a href="/assignmentsPageST">Assignments</a></h2>
+            <ol>
+                <% course.assignments.forEach(function(assignment){ %>
+                    <li><%= assignment.assignmentName%></li>
+                <% }); %>
+            </ol>
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+    <%- include('../../partials/_scripts') %>
+  </body>
+</html>

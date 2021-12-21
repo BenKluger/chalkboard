@@ -18,7 +18,10 @@ body {
   background: #f3f3ef;
 }
 
-h1 {
+h1{
+  text-align: center;
+}
+.assignName{
   text-align: center;
 }
 
@@ -29,6 +32,7 @@ p {
   line-height: 1.7em;
   color: #8e8268;
 }
+
 
 a,
 a:hover,

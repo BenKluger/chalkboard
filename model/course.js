@@ -56,6 +56,7 @@ const CourseSchema = new mongoose.Schema(
             required: true
         },
         Students: [String],
+        studentRequests: [String],
         assignments: [assignmentSchema]
     },
     {   timestamps: true,
@@ -63,6 +64,7 @@ const CourseSchema = new mongoose.Schema(
 )
 
 const modelCourse = mongoose.model('CourseSchema', CourseSchema);
+module.exports = modelCourse;
 // const assignmentCourse = mongoose.model('assignmentSchema', assignmentSchema);
 // module.exports = assignmentCourse;
-module.exports = modelCourse;
+

@@ -11,19 +11,19 @@
           <div>
             <%- include('../../partials/_top-nav') %>
 
-            <h1><%= assign.assignmentName %></h1>
-            <form id="allQA" >
-                <div class="form-row" id="qaForm">
-                    <% assign.questions.forEach(function(question){ %>
+            <h2 class="assignName"><%= assign.CourseNum %> - <%= assign.assignments[0].assignmentName %> Assignment</h2>
+            <a href="/assignmentsPage"><i class="fas fa-undo-alt"></i> All Assignments</a>
+            <div id="allQA" >
+                <div>
+                    <% for(let i = 0; i < assign.assignments[0].questions.length; i++){ %>
                         <div class="line"></div>
-                        <p>Question: <%= question %> </p>
-                    <% }); %>
+                        <h5>Question <%= [i+1] %> </h5>
+                        <div>Q: <%= assign.assignments[0].questions[i] %></div>
+                        <div>A: <%= assign.assignments[0].answers[i] %></div>
+                    <% }; %> 
                 </div>
                 
-            </form>
-            
-            <!-- <a class="btn btn-info" href="/updateCourse/">Edit Course</a> -->
-
+            </div>
         </div>
 
         <%- include('../../partials/_footer') %>

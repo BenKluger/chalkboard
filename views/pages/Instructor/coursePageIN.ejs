@@ -10,33 +10,85 @@
       <div id="content">
           <div>
             <%- include('../../partials/_top-nav') %>
-
-            <h1><%= course.CourseNum %></h1>  
-            <h2>Course Name</h2>
-            <p><%= course.CourseName %></p>
-            <h2>Course Description</h2>
-            <p><%= course.CourseDescription %></p>
-            <h2><a href="/assignmentsPage">Assignments</a></h2>
-            <ol>
-                <% course.assignments.forEach(function(assignment){ %>
-                    <li><%= assignment.assignmentName%></li>
+            <div class="container">
+              <div class="row d-flex justify-content-center">
+                <h1><%= course.CourseNum %></h1>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <h5>Course Name</h5>
+                  <p><%= course.CourseName %></p>
+                  <h5>Course Description</h5>
+                  <p><%= course.CourseDescription %></p>
+                  <h5><a href="/assignmentsPage">Assignments</a></h5>
+                  <ol>
+                      <% course.assignments.forEach(function(assignment){ %>
+                          <li><%= assignment.assignmentName%></li>
+                      <% }); %>
+                  </ol>
+                  <h5>Students</h5>
+                  <ul>
+                      <% course.Students.forEach(function(student){ %>
+                          <li><%= student%></li>
+                      <% }); %>
+                  </ul>
+                </div>
+                <div class="col-sm">
+                  <h5>Enrollment Requests</h5>
+                  <% course.studentRequests.forEach(function(student){ %>
+                    <form action="">
+                      <p class="d-inline"><%= student%></p>
+                      <button class="btn btn-info d-inline" onclick="accept()" id="<%=student%>a">Accept</button>
+                      <button class="btn btn-info d-inline" onclick="reject()" id="<%= student%>r">Reject</button>
+                    </form>
+                    <div class="line"></div>
                 <% }); %>
-            </ol>
-            <h2>Students</h2>
-            <!-- <a href="studentRoster.html">Students</a> -->
-            <ol>
-                <% course.Students.forEach(function(student){ %>
-                    <li><%= student%></li>
-                <% }); %>
-            </ol>
-
+                </div>
+              </div>
+            </div>
         </div>
-
-
         <%- include('../../partials/_footer') %>
       </div>
-
     </div>
     <%- include('../../partials/_scripts') %>
+
+    <script>
+      async function accept(){
+          event.preventDefault();
+          const student = event.srcElement.id;
+          const studentName = student.slice(0, -1);
+          const result = await fetch('/updateEnrollmentAccept', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              studentName
+            })
+          }).then((res) => res.json())
+            if(result.error){
+              alert(result.error);
+            }
+            window.location.href = result.url;
+      }
+      async function reject(){
+          event.preventDefault();
+          const student = event.srcElement.id;
+          const studentName = student.slice(0, -1);
+          const result = await fetch('/updateEnrollmentReject', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              studentName
+            })
+          }).then((res) => res.json())
+            if(result.error){
+              alert(result.error);
+            }
+            window.location.href = result.url;
+      }
+    </script>
   </body>
 </html>

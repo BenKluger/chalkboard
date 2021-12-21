@@ -21,34 +21,24 @@
                   <i class="fas fa-search"></i>
                 </button>
               </div>
-              
-
               <table class = "table table-hover">
                 <form method="post"  class="inline" id="pickedCourse">
                 <% courses.forEach(function(course){ %>
                   <tr>
-                    
                     <td>
                       <button type="submit" onClick= "selectedCourse()" class="link-button" value="<%= course.CourseID %>" id = "<%= course.CourseID %>"> <!--name="submit_param" value="submit_value"-->
                         <%= course.CourseNum %> - <%= course.CourseName %>
                       </button>
                     </td>
-                  
                   </tr>
-  
                 <% }); %>
                 </form>
               </table>
-
         </div>
-
-
         <%- include('../../partials/_footer') %>
       </div>
-
     </div>
     <%- include('../../partials/_scripts') %>
-
 
     <script>
 

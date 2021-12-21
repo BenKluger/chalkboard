@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_stside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+            <h1><%= course.CourseNum %></h1>
+            <h5>Name: </h5>
+            <p><%= course.CourseName %></p>
+            <h5>Course Credits: </h5>
+            <p><%= course.CourseCredits %></p>
+            <h5>Instructors: </h5>
+            <p><%= course.Instructors %></p>
+            <h5>Description:</h5>
+            <p><%= course.CourseDescription %></p>
+
+            <button class="btn btn-info" onclick="requestEnroll()" id = "<%= course.CourseID %>">Request Enrollment in Course</button>
+        </div>
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+    <%- include('../../partials/_scripts') %>
+    <script>
+        async function requestEnroll(){
+          event.preventDefault();
+          const CourseID = event.srcElement.id;
+          const result = await fetch('/enrollCourse', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              CourseID
+            })
+          }).then((res) => res.json())
+            // console.log(result);
+            if(result.error){
+              alert(result.error);
+            }
+            alert("A request has been sent to the instructor. If approved, you will see the course under 'My Courses'");
+            event.setAttribute('disabled', true)
+            window.location.href = result.url;
+        }
+    </script>
+  </body>
+</html>

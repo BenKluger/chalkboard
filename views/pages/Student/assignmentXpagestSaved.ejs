@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_stside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+                <%# assign.CourseNum  %> 
+                <h2 class="assignName"><%= assign.assignments[0].assignmentName %></h2>
+                <a href="/assignmentsPageST"><i class="fas fa-undo-alt"></i> All Assignments</a>
+                <form action="">
+                    <div id="qaForm" class="<%= assign.assignments[0].assignmentId%> ">
+                        <% for(let i = 0; i < assign.assignments[0].questions.length; i++){ %>
+                            <div class="line"></div>
+                            <h5>Question <%= [i+1] %></h5>
+                            <div>Q: <%= assign.assignments[0].questions[i] %></div>
+                            <input type="text" name="answer" class="form-control answer" placeholder="Your Answer" value="<%= submit.answers[i] %> ">
+                        <% }; %> 
+                    </div>
+                    <div class="line"></div>
+                    <button class="btn btn-info" onclick="submitAnswers()" id="<%=assign.assignments[0].assignmentId%>">Save/Submit</button>
+                </form>
+            </div>
+
+            <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+    <%- include('../../partials/_scripts') %>
+    <script>
+        async function submitAnswers(){
+          event.preventDefault();
+          const assignmentID = event.srcElement.id;
+          const answerObject = document.getElementsByClassName('answer');
+          const answers = [];
+          if(answerObject.length > 0){
+            for(let i = 0; i < answerObject.length; i++){
+                answers.push(answerObject[i].value)
+            }
+          } 
+          const result = await fetch('/submitAns', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              assignmentID,
+              answers
+            })
+          }).then((res) => res.json())
+            if(result.error){
+              alert(result.error);
+            }
+            alert("Submission Saved Successfully");
+            window.location.href = result.url;
+        }
+    </script>
+  </body>
+</html>
+
+

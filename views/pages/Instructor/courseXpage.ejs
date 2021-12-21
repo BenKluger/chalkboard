@@ -10,15 +10,16 @@
       <div id="content">
           <div>
             <%- include('../../partials/_top-nav') %>
-
             <h1><%= course.CourseNum %></h1>
-            <h4>Name:</h4>
+            <h5>Name: </h5>
             <p><%= course.CourseName %></p>
-            <h4>Instructors:</h4>
+            <h5>Course Credits: </h5>
+            <p><%= course.CourseCredits %></p>
+            <h5>Instructors: </h5>
             <p><%= course.Instructors %></p>
-            <h4>Description:</h4>
+            <h5>Description:</h5>
             <p><%= course.CourseDescription %></p>
-            <h4>Materials:</h4>
+            <h5>Materials:</h5>
             <p><%= course.CourseMaterials %></p>
             
             <a class="btn btn-info" href="/updateCourse/<%= course.CourseID %>">Edit Course</a>

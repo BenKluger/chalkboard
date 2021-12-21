@@ -9,7 +9,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const User = require("./model/user");
 const Course = require("./model/course");
-const Assignment = require("./model/assignment");
+const Submission = require("./model/assignmentsubmission");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
@@ -88,6 +88,39 @@ app.get("/availCoursesIN", requireAuth('instructor'), function (req, res) {
 });
 
 
+
+app.post("/updateEnrollmentAccept", async (req, res) => {
+  const { studentName } = req.body;
+  const course = req.cookies.courseid;
+  try {
+    const response = await Course.findOne({CourseID: course})
+    console.log('response', response)
+    console.log(studentName)
+    response.Students.push(studentName)
+    response.studentRequests.pull(studentName)
+    await response.save();
+    console.log("Student enrolled successfully: ", response);
+  } catch (error) {
+    console.log(error)
+  }
+  res.json({ status: "ok", url: `/coursePageIN/${course}`});
+});
+app.post("/updateEnrollmentReject", async (req, res) => {
+  const { studentName } = req.body;
+  const course = req.cookies.courseid;
+  try {
+    const response = await Course.findOne({CourseID: course})
+    console.log('response', response)
+    console.log(studentName)
+    response.studentRequests.pull(studentName)
+    await response.save();
+    console.log("Student rejected successfully: ", response);
+  } catch (error) {
+    console.log(error)
+  }
+  res.json({ status: "ok", url: `/coursePageIN/${course}`});
+});
+
 ////////////////// Course pages specifically for My Courses
 app.post("/coursePageIN", (req, res) => {
   const { CourseID } = req.body;
@@ -161,12 +194,11 @@ app.post("/assignXpage", (req, res) => {
   const { assignmentId } = req.body;
   res.json({ status: "ok", url: `/assignXpage/${assignmentId}`, assignmentId: assignmentId });
 });
-/////////////////////////////////////////// FIGURE OUT HOW TO GET THE ASSIGNMENT OBJECT FROM COURSE
 app.get("/assignXpage/:assign", requireAuth('instructor'), function (req, res){
   let input = req.params.assign;
   // let course = req.cookies.courseid;
   console.log('input', input)
-  Course.findOne({"Course.assignments": { assignmentId: input}})
+  Course.findOne({'assignments.assignmentId': input}, {_id: 0, assignments: {$elemMatch: { assignmentId: '1'}}, CourseNum: 1, assignments: 1})
     .then((result) => {
       console.log(result)
       res.render("pages/Instructor/assignmentXpage", { assign: result });
@@ -207,14 +239,164 @@ app.get("/createCourse", requireAuth('instructor'), function (req, res) {
 });
 
 ////////////////////////////// STUDENT ROUTES
+
+
+/////////////////////////////Submit Assignment
+app.post("/submitAns", async (req, res) => {
+  const {
+    assignmentID,
+    answers
+  } = req.body;
+  var courseID = req.cookies.courseid;
+  var username = req.cookies.fullname;
+  try {
+    const submission = await Submission.findOne({ assignmentID, username });
+    if(!submission){
+      var submissionID = Date.now();
+      const response = await Submission.create({
+        submissionID,
+        assignmentID,
+        courseID,
+        username,
+        answers
+      });
+      console.log("Submission created successfully: ", response);
+    }else{
+      Submission.updateOne({assignmentID: assignmentID, username: username}, {
+        "assignmentID": assignmentID,
+        "courseID": courseID,
+        "username": username,
+        "answers": answers
+      }, function(err, result){
+        if(err){
+          res.send(err)
+        }
+        else{
+          console.log("Course updated successfully: ", result);
+        }
+      })
+    }
+    
+  } catch (error) {
+    console.log(error)
+  }
+  res.json({ status: "ok", url: "/assignmentsPageST" });
+});
+
+
+////////////////////////// Specific Assignment Page
+app.post("/assignXpagest", (req, res) => {
+  const { assignmentId } = req.body;
+  res.json({ status: "ok", url: `/assignXpagest/${assignmentId}`, assignmentId: assignmentId });
+});
+app.get("/assignXpagest/:assign", requireAuth('student'), function (req, res){
+  let input = req.params.assign;
+  var username = req.cookies.fullname;
+  // Course.findOne({'assignments.assignmentId': input}, {_id: 0, assignments: {$elemMatch: { assignmentId: '0'}}, CourseNum: 1, assignments: 1})
+  Submission.findOne({ assignmentID: input, username: username })
+    .then((result)=>{
+      var findSubmit = result;
+      if(!findSubmit){
+        Course.findOne({'assignments.assignmentId': input}).select({ assignments: {$elemMatch: {assignmentId: input}}})
+        .then((result) => {
+          res.render("pages/Student/assignmentXpagest", { assign: result});
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }else{
+        Course.findOne({'assignments.assignmentId': input}).select({ assignments: {$elemMatch: {assignmentId: input}}})
+        .then((result) => {
+          res.render("pages/Student/assignmentXpagestSaved", { assign: result, submit: findSubmit});
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+////////////////////////// Assignment Page Students
+app.get("/assignmentsPageST", requireAuth('student'),function (req, res){
+  let course = req.cookies.courseid;
+  Course.findOne({ CourseID: course})
+    .then((result) => {
+      res.render("pages/Student/assignmentsDBst", { course: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+})
+
+///////////////////////// Course Pages Specifically for my courses
+app.post("/coursePageST", (req, res) => {
+  const { CourseID } = req.body;
+  res.json({ status: "ok", url: `/coursePageST/${CourseID}`, CourseID: CourseID });
+});
+
+app.get("/coursePageST/:course", requireAuth('student'), function (req, res){
+  let input = req.params.course;
+  res.cookie("courseid", input);
+  Course.findOne({ CourseID: input})
+    .then((result) => {
+      res.render("pages/Student/coursePageST", { course: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+//////////////////Enroll in a course
+app.post("/enrollCourse", async (req, res) => {
+  const { CourseID } = req.body;
+  const studentName = req.cookies.fullname;
+  try {
+    const response = await Course.findOne({CourseID: CourseID})
+    response.studentRequests.push(studentName)
+    await response.save();
+    console.log("Enrollment Request Successful: ", response);
+  } catch (error) {
+    console.log(error)
+  }
+  res.json({ status: "ok", url: "/availCoursesST"});
+});
+
 app.get("/availCoursesST", requireAuth('student'), function (req, res) {
-  res.render("pages/Student/availCoursesST");
+  Course.find().sort({"CourseNum": 1})
+    .then((result) => {
+      res.render("pages/Student/availCoursesST", { courses: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+app.post("/coursedetailsST", (req, res) => {
+  const { CourseID } = req.body;
+  res.json({ status: "ok", url: `/coursedetailsST/${CourseID}`, CourseID: CourseID });
 });
 
+app.get("/coursedetailsST/:course", requireAuth('student'), function (req, res){
+  let input = req.params.course;
+  Course.findOne({ CourseID: input})
+    .then((result) => {
+      res.render("pages/Student/courseXpage", { course: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 app.get("/studentHome", requireAuth('student'), function (req, res) {
-  res.render("pages/Student/studentHomePage");
+  let userfullname = req.cookies.fullname;
+  Course.find({Students: userfullname})
+    .then((result) => {
+      res.render("pages/Student/studentHomePage", { courses: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
-
 ///////////////////////////// OTHER ROUTES
 //Log in / Register pages
 app.get("/login", function (req, res) {

@@ -4,58 +4,55 @@
 
   <body>
     <div class="wrapper">
-     <!-- Sidebar  -->
-     <%- include('../../partials/_stside-nav') %>
+      <%- include('../../partials/_stside-nav') %>
 
       <!-- Page Content  -->
       <div id="content">
         <div>
           <%- include('../../partials/_top-nav') %>
-        
-            <h1>CSCI 220 Assignments</h1>
+
+
+            <h1><%= course.CourseNum%> Assignments</h1>
             <table class="table">
                 <tr>
-                    <th>Name</th>
-                    <th>Due Date</th>
-                    <th>Status</th> <!-- Assigned, submitted-->
-                    <th>Grade</th>
+                    <th>Assignment Name</th>
                 </tr>
-                <tr>
-                    <td><a href="assignmentPageST.html">Solve this algorithm</a></td>
-                    <td>11/30/2021</td>
-                    <td>Assigned</td>
-                    <td>--/100</td>
-                </tr>
-                <!-- <tr>
-                    <td>Solve this recurrence</td>
-                    <td>12/05/2021</td>
-                </tr>
-                <tr>
-                    <td>Solve this relation</td>
-                    <td>12/10/2021</td>
-                </tr> -->
+                <% course.assignments.forEach(function(assignment){ %>
+                  <tr><td>
+                    <button type="submit" onClick= "selectedCourse()" class="link-button" value="<%= assignment.assignmentId %>" id ="<%= assignment.assignmentId%>"> <!--name="submit_param" value="submit_value"-->
+                      <%= assignment.assignmentName%>
+                    </button>
+                  </td></tr>
+                <% }); %>
+
             </table>
-
-
-
         </div>
-
-
         <%- include('../../partials/_footer') %>
       </div>
 
     </div>
     <%- include('../../partials/_scripts') %>
-    <!-- <script>
-      $(document).ready(function () {
-        $("#sidebarCollapse").on("click", function () {
-          $("#sidebar").toggleClass("active");
-          $(".logo").toggleClass("active");
-        });
-        $("#sidebarCollapse").on("click", function showImage() {
-          $(".logo").toggle();
-        });
-      });
-    </script> -->
+    <script>
+
+      async function selectedCourse(){
+          event.preventDefault();
+          const assignmentId = event.srcElement.id;
+          const result = await fetch('/assignXpagest', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              assignmentId
+            })
+          }).then((res) => res.json())
+            if(result.error){
+              alert(result.error);
+            }
+            window.location.href = result.url;
+        }
+
+      
+    </script>
   </body>
 </html>

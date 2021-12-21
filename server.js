@@ -196,18 +196,28 @@ app.post("/submissionXpage", (req, res) => {
 });
 app.get("/submissionXpage/:submissionx", requireAuth('instructor'), function (req, res){
   let submissionID = req.params.submissionx;
-  console.log('input', submissionID)
-  Submission.find({submissionID: input})
+  Submission.findOne({submissionID: submissionID})
     .then((result) => {
-      console.log(result)
-      res.render("pages/Instructor/assignmentXsubmissions", {  submission: result });
+      const submissionFound = result;
+      console.log('submission found', submissionFound);
+      Course.findOne({'assignments.assignmentId': submissionFound.assignmentID}, {_id: 0, assignments: {$elemMatch: { assignmentId: '1'}}, assignments: 1})
+      .then((result) => {
+        console.log('Course with Assignment',result)
+        const indexx = result.assignments.findIndex(function (assignment) {
+          return assignment.assignmentId == submissionFound.assignmentID;
+        })
+        console.log(indexx)
+        res.render("pages/Instructor/studentXsubmission", { submission: submissionFound, assignment: result, index: indexx });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     })
     .catch((err) => {
       console.log(err);
     });
-    
 });
-/////////////////////////////View Assignment Submissions
+/////////////////////////////View list of students that submitted Assignment
 app.post("/viewSubmissions", (req, res) => {
   const { assignmentID } = req.body;
     console.log('assignmentID', assignmentID)

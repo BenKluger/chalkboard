@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <%- include('../../partials/_iside-nav') %>
+
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+                <h2 class="assignName"><%= assignment.assignments[index].assignmentName %></h2>
+                <h3 class="text-center"><%= submission.username %>'s Submission</h3>
+                <a href="/assignmentsPageST"><i class="fas fa-undo-alt"></i> All Assignments</a>
+                <br>
+                <div class="form-inline col-xs-2">
+                    <label>Grade: </label>
+                    <input class="form-control col-xs-2" type="number" min="0" max="100" placeholder="Grade">
+                </div>
+                <label>Instructor Feedback:</label>
+                <textarea name="" id="" cols="30" rows="3" class="form-control"></textarea>
+                <!-- <input class="form-control" type="text"> -->
+                
+                <form action="">
+                    <div id="qaForm" class="<%= assignment.assignments[index].assignmentId%> ">
+                        <% for(let i = 0; i < assignment.assignments[index].questions.length; i++){ %>
+                            <div class="line"></div>
+                            <h5>Question <%= [i+1] %></h5>
+                            <div>Q: <%= assignment.assignments[index].questions[i] %></div>
+                            <input readonly type="text" name="answer" class="form-control answer" placeholder="Your Answer" value="<%= submission.answers[i] %> ">
+                        <% }; %> 
+                    </div>
+                    <div class="line"></div>
+                </form>
+                
+                <!-- <p>assignment <%# assignment %> </p>
+                <p>submission: <%# submission %> </p> -->
+            </div>
+
+            <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+    <%- include('../../partials/_scripts') %>
+    
+  </body>
+</html>

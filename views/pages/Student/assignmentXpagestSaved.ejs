@@ -23,7 +23,8 @@
                         <% }; %> 
                     </div>
                     <div class="line"></div>
-                    <button class="btn btn-info" onclick="submitAnswers()" id="<%=assign.assignments[0].assignmentId%>">Save/Submit</button>
+                    <button class="btn btn-info" onclick="saveAnswers()" id="<%=assign.assignments[0].assignmentId%>">Save Draft</button>
+                    <button class="btn btn-info" onclick="submitAnswers()" id="<%=assign.assignments[0].assignmentId%>">Submit</button>
                 </form>
             </div>
 
@@ -33,33 +34,65 @@
     </div>
     <%- include('../../partials/_scripts') %>
     <script>
-        async function submitAnswers(){
-          event.preventDefault();
-          const assignmentID = event.srcElement.id;
-          const answerObject = document.getElementsByClassName('answer');
-          const answers = [];
-          if(answerObject.length > 0){
-            for(let i = 0; i < answerObject.length; i++){
-                answers.push(answerObject[i].value)
-            }
-          } 
-          const result = await fetch('/submitAns', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              assignmentID,
-              answers
-            })
-          }).then((res) => res.json())
-            if(result.error){
-              alert(result.error);
-            }
-            alert("Submission Saved Successfully");
-            window.location.href = result.url;
-        }
-    </script>
+      async function saveAnswers(){
+        event.preventDefault();
+        const assignmentID = event.srcElement.id;
+        const answerObject = document.getElementsByClassName('answer');
+        const status = 'Draft';
+        const answers = [];
+        if(answerObject.length > 0){
+          for(let i = 0; i < answerObject.length; i++){
+              answers.push(answerObject[i].value)
+          }
+        } 
+        const result = await fetch('/saveAns', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            assignmentID,
+            answers,
+            status
+          })
+        }).then((res) => res.json())
+          if(result.error){
+            alert(result.error);
+          }
+          alert("Draft Saved Successfully");
+          window.location.href = result.url;
+      }
+
+
+      async function submitAnswers(){
+        event.preventDefault();
+        const assignmentID = event.srcElement.id;
+        const status = 'Submitted';
+        const answerObject = document.getElementsByClassName('answer');
+        const answers = [];
+        if(answerObject.length > 0){
+          for(let i = 0; i < answerObject.length; i++){
+              answers.push(answerObject[i].value)
+          }
+        } 
+        const result = await fetch('/submitAns', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            assignmentID,
+            answers,
+            status
+          })
+        }).then((res) => res.json())
+          if(result.error){
+            alert(result.error);
+          }
+          alert("Submitted Successfully");
+          window.location.href = result.url;
+      }
+  </script>
   </body>
 </html>
 

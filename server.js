@@ -241,11 +241,12 @@ app.get("/createCourse", requireAuth('instructor'), function (req, res) {
 ////////////////////////////// STUDENT ROUTES
 
 
-/////////////////////////////Submit Assignment
-app.post("/submitAns", async (req, res) => {
+/////////////////////////////Save Assignment
+app.post("/saveAns", async (req, res) => {
   const {
     assignmentID,
-    answers
+    answers,
+    status
   } = req.body;
   var courseID = req.cookies.courseid;
   var username = req.cookies.fullname;
@@ -258,7 +259,8 @@ app.post("/submitAns", async (req, res) => {
         assignmentID,
         courseID,
         username,
-        answers
+        answers,
+        status
       });
       console.log("Submission created successfully: ", response);
     }else{
@@ -266,7 +268,53 @@ app.post("/submitAns", async (req, res) => {
         "assignmentID": assignmentID,
         "courseID": courseID,
         "username": username,
-        "answers": answers
+        "answers": answers,
+        "status": status
+      }, function(err, result){
+        if(err){
+          res.send(err)
+        }
+        else{
+          console.log("Course updated successfully: ", result);
+        }
+      })
+    }
+    
+  } catch (error) {
+    console.log(error)
+  }
+  res.json({ status: "ok", url: "/assignmentsPageST" });
+});
+
+//////////////// Submit the Assignment
+app.post("/submitAns", async (req, res) => {
+  const {
+    assignmentID,
+    answers,
+    status
+  } = req.body;
+  var courseID = req.cookies.courseid;
+  var username = req.cookies.fullname;
+  try {
+    const submission = await Submission.findOne({ assignmentID, username });
+    if(!submission){
+      var submissionID = Date.now();
+      const response = await Submission.create({
+        submissionID,
+        assignmentID,
+        courseID,
+        username,
+        answers,
+        status
+      });
+      console.log("Submission created successfully: ", response);
+    }else{
+      Submission.updateOne({assignmentID: assignmentID, username: username}, {
+        "assignmentID": assignmentID,
+        "courseID": courseID,
+        "username": username,
+        "answers": answers,
+        "status": status
       }, function(err, result){
         if(err){
           res.send(err)
@@ -307,7 +355,12 @@ app.get("/assignXpagest/:assign", requireAuth('student'), function (req, res){
       }else{
         Course.findOne({'assignments.assignmentId': input}).select({ assignments: {$elemMatch: {assignmentId: input}}})
         .then((result) => {
-          res.render("pages/Student/assignmentXpagestSaved", { assign: result, submit: findSubmit});
+          if(findSubmit.status =='Draft'){
+            res.render("pages/Student/assignmentXpagestSaved", { assign: result, submit: findSubmit});
+          }else if(findSubmit.status == 'Submitted'){
+            res.render("pages/Student/assignmentXpagestSubmitted", { assign: result, submit: findSubmit});
+          }
+          
         })
         .catch((err) => {
           console.log(err);

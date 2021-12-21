@@ -21,6 +21,15 @@ const submissionSchema = new mongoose.Schema(
         },
         answers: {
             type: [String],
+        },
+        status: {
+            type: String
+        },
+        grade: {
+            type: Number
+        },
+        feedback: {
+            type: String
         }
     },
     {

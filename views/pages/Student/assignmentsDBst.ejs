@@ -16,13 +16,17 @@
             <table class="table">
                 <tr>
                     <th>Assignment Name</th>
+                    <!-- <th>Status</th> -->
                 </tr>
                 <% course.assignments.forEach(function(assignment){ %>
                   <tr><td>
                     <button type="submit" onClick= "selectedCourse()" class="link-button" value="<%= assignment.assignmentId %>" id ="<%= assignment.assignmentId%>"> <!--name="submit_param" value="submit_value"-->
                       <%= assignment.assignmentName%>
                     </button>
-                  </td></tr>
+                  </td>
+                  <!-- <td><%#  %> </td>  For Grade Status--> 
+                </tr>
+                  
                 <% }); %>
 
             </table>

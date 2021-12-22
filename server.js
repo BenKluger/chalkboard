@@ -630,6 +630,33 @@ app.post("/enrollCourse", async (req, res) => {
   res.json({ status: "ok", url: "/availCoursesST" });
 });
 
+// app.get("/availCoursesST", requireAuth('student'), function(req, res){
+//   var noMatch = null;
+//   const { search } = req.body;
+//   if(search) {
+//       const regex = new RegExp(escapeRegex(search), 'gi');
+//       Course.find({CourseNum: regex}, function(err, allCourses){
+//          if(err){
+//              console.log(err);
+//          } else {
+//             if(allCourses.length < 1) {
+//                 noMatch = "No courses match that query, please try again.";
+//             }
+//             res.render("pages/Student/availCoursesST",{campgrounds:allCourses, noMatch: noMatch});
+//          }
+//       });
+//   } else {
+//       // Get all campgrounds from DB
+//       Course.find({}, function(err, allCourse){
+//          if(err){
+//              console.log(err);
+//          } else {
+//             res.render("pages/Student/availCoursesST",{campgrounds:allCourses, noMatch: noMatch});
+//          }
+//       });
+//   }
+// });
+
 app.get("/availCoursesST", requireAuth("student"), function (req, res) {
   Course.find()
     .sort({ CourseNum: 1 })
@@ -640,6 +667,9 @@ app.get("/availCoursesST", requireAuth("student"), function (req, res) {
       console.log(err);
     });
 });
+
+
+
 app.post("/coursedetailsST", (req, res) => {
   const { CourseID } = req.body;
   res.json({

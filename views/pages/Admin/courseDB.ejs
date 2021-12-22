@@ -17,18 +17,29 @@
             <h2 class="text-center">Courses Database</h2>
             <table class="table table-hover">
                 <tr>
-                    <th>Course</th>
-                    <!-- <th>Last Name</th>
-                    <th>Email</th>
-                    <th>User Type</th> -->
+                    <th>Course Number</th>
+                    <th>Course Name</th>
+                    <th>Course ID</th>
+                    <th>Course Credits</th>
+                    <th>Course Description</th>
+                    <th>Course Materials</th>
+                    <th>Instructors</th>
+                    <th>Students</th>
+                    <th>Student Requests</th>
+                    <th>Assignments</th>
                 </tr>
                 <% course.forEach(function(course){ %>
                     <tr>
-                      <td> <%= course %> </td>
-                        <!-- <td> <%# user.firstname %> </td>
-                        <td> <%# user.lastname %> </td>
-                        <td> <%# user.email %> </td>
-                        <td> <%# user.usertype %> </td> -->
+                        <td> <%= course.CourseNum %> </td>
+                        <td> <%= course.CourseName %> </td>
+                        <td> <%= course.CourseID %> </td>
+                        <td> <%= course.CourseCredits %> </td>
+                        <td> <%= course.CourseDescription %> </td>
+                        <td> <%= course.CourseMaterials %> </td>
+                        <td> <%= course.Instructors %> </td>
+                        <td> <%= course.Students%> </td>
+                        <td> <%= course.studentRequests%> </td>
+                        <td> <%= course.assignments %> </td>
                     </tr>                    
                 <% }); %>
 

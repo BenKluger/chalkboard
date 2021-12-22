@@ -32,6 +32,9 @@ https://chalkboard-amnaben.herokuapp.com/
   - Amna
   - Ben
 
+- Difference between wireframe/sitemap and final website structure:
+  - Overall they were much the same, with few differences - namely, an extra one or two intermediary pages between two sections of the website, such as going between "My Courses" to finally creating an assignment.
+
 
 ### Index Pages
 - Register a user as a student or an instructor (with validation):
@@ -132,8 +135,7 @@ https://chalkboard-amnaben.herokuapp.com/
 
 ## Wireframe
 
-Difference between wireframe/sitemap and final website structure:
-  Overall they were much the same, with few differences - namely, an extra one or two intermediary pages between two sections of the website, such as going between "My Courses" to finally creating an assignment.
+
 
 ###### Desktop:
 

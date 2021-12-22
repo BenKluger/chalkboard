@@ -24,8 +24,8 @@ https://chalkboard-amnaben.herokuapp.com/
   - Only specific user types can access that user type's pages (e.g. student accounts can only access student pages when logged in)
 
 - Technologies used:
-  - Frontend: HTML, Bootstrap, Javascript
-  - Backend: MongoDB, Node.js, Mongoose, Express
+  - Frontend: HTML, Bootstrap, Javascript, ejs
+  - Backend: MongoDB, Node.js, Mongoose, Express, bcyrpt, ejs, cookie-parser,jsonwebtoken, nodemon
 
 
 ### Index Pages

@@ -48,7 +48,8 @@ https://chalkboard-amnaben.herokuapp.com/
 
 - Ability to view all available course information
 
-![image](https://user-images.githubusercontent.com/69221395/147026553-84da0fb8-c921-4e5e-a272-c912e69b85f1.png)
+![image](https://user-images.githubusercontent.com/69221395/147028743-c4a395d7-0fbc-4f84-817f-ea6799839cab.png)
+
 
 - Ability to view all student submissions
 
@@ -80,7 +81,7 @@ https://chalkboard-amnaben.herokuapp.com/
 
 
 - Ability to search for a course within the available courses
-
+  - NOT COMPLETED
 
 
 ### Instructor Section
@@ -114,7 +115,7 @@ https://chalkboard-amnaben.herokuapp.com/
 
 
 - Ability to search for a course within the available courses
-
+  - NOT COMPLETED
 
 
 

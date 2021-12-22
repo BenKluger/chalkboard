@@ -28,9 +28,12 @@ https://chalkboard-amnaben.herokuapp.com/
   - Backend: Node.js, Mongoose, Express, bcyrpt, ejs, cookie-parser,jsonwebtoken, nodemon
   - Database: MongoDB
 
-- Team Members: (A mixture of screensharing and private work was utilized, with Amna taking the lead on screensharing much of the backend Node.js)
+- Team Members: (A mixture of screensharing and private work was utilized, with Amna taking the lead on screensharing much of the backend Node.js, while Ben did more of the frontend.)
   - Amna
   - Ben
+
+- Difference between wireframe/sitemap and final website structure:
+  - Overall they were much the same, with few differences - namely, an extra one or two intermediary pages between two sections of the website, such as going between "My Courses" to finally creating an assignment.
 
 
 ### Index Pages
@@ -81,7 +84,10 @@ https://chalkboard-amnaben.herokuapp.com/
 
 
 - Ability to search for a course within the available courses
-  - NOT COMPLETED
+
+![image](https://user-images.githubusercontent.com/69221395/147051024-5cfdfabd-1eec-42b8-8e0f-d202348e8898.png)
+![image](https://user-images.githubusercontent.com/69221395/147051063-97719f94-8d51-4dd0-9791-de22e5476e2c.png)
+
 
 
 ### Instructor Section
@@ -115,7 +121,11 @@ https://chalkboard-amnaben.herokuapp.com/
 
 
 - Ability to search for a course within the available courses
-  - NOT COMPLETED
+
+![image](https://user-images.githubusercontent.com/69221395/147050890-c5381af8-c65d-4bc7-b72c-c16a90444e1b.png)
+![image](https://user-images.githubusercontent.com/69221395/147050925-3b0f88d2-73c8-47d2-85d8-ef7c557d9c93.png)
+
+
 
 
 
@@ -125,8 +135,7 @@ https://chalkboard-amnaben.herokuapp.com/
 
 ## Wireframe
 
-Difference between wireframe/sitemap and final website structure:
-  Overall they were much the same, with few differences - namely, an extra one or two intermediary pages between two sections of the website, such as going between "My Courses" to finally creating an assignment.
+
 
 ###### Desktop:
 

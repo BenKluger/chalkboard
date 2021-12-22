@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../../partials/_head') %>
+
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar  -->
+      <%- include('../../partials/_aside-nav') %>
+      <head>
+        <title>Admin|Submissions</title>
+      </head>
+      <!-- Page Content  -->
+      <div id="content">
+          <div>
+            <%- include('../../partials/_top-nav') %>
+
+            <h2 class="text-center">Submissions Database</h2>
+            <table class="table table-hover">
+                <tr>
+                    <th>User Name</th>
+                    <th>Course ID</th>
+                    <th>Assignment ID</th>
+                    <th>Submission ID</th>
+                    <th>Status</th>
+                </tr>
+                <% submission.forEach(function(submission){ %>
+                    <tr>
+                        <td> <%= submission.username %> </td>
+                        <td> <%= submission.courseID %> </td>
+                        <td> <%= submission.assignmentID %> </td>
+                        <td> <%= submission.submissionID %> </td>
+                        <td> <%= submission.status %> </td>
+                    </tr>                    
+                <% }); %>
+
+            </table>
+            <a href="/adminHome" class="btn btn-info float-right">Dashboard</a>
+
+
+        </div>
+
+
+        <%- include('../../partials/_footer') %>
+      </div>
+
+    </div>
+
+    <%- include('../../partials/_scripts') %>
+  </body>
+</html>

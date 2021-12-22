@@ -48,6 +48,136 @@
             </table>
             <a href="/users" class="btn float-right btn-info">View More</a> <br>
 
+             <!-- Preview of the Submissions Data Base. -->
+            <h2>Submissions Preview</h2>
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>User Name</th>
+                    <th>Course ID</th>
+                    <th>Assignment ID</th>
+                    <th>Submission ID</th>
+                    <th>Status</th>
+                </tr>
+                <% for(let i = 0; i < 4; i++){ %>
+                    <% if(submission.length < 4){ %>
+                        <tr>
+                            <td> Please click view more to see all submissions</td>
+                        </tr>
+                    <% break } %>
+                    <tr>
+                        <td> <%= submission[i].username %> </td>
+                        <td> <%= submission[i].courseID %> </td>
+                        <td> <%= submission[i].assignmentID %> </td>
+                        <td> <%= submission[i].submissionID %> </td>
+                        <td> <%= submission[i].status %> </td>
+                    </tr>                    
+                <% }; %>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+
+            </table>
+            <a href="/submissionList" class="btn btn-info float-right">View More</a> <br>
+
+            <!-- Preview of the Courses Data Base. -->
+            <h2>Course Preview</h2>
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>Course Info</th>
+                    
+                </tr>
+                <% for(let i = 0; i < 4; i++){ %>
+                    <% if(course.length < 2){ %>
+                        <tr>
+                            <td> Please click view more to see all submissions</td>
+                        </tr>
+                    <% break } %>
+                    <tr>
+                        <td> <%= course[i] %> </td>
+                        
+                    </tr>                    
+                <% }; %>
+                <tr>
+                    <td>...</td>
+                    
+                </tr>
+
+            </table>
+            <a href="/courseList" class="btn btn-info float-right">View More</a> <br>
+
+
+
+
+
+            <!-- Preview of the Assignments Data Base. -->
+            <!-- <h2>Assignments Preview</h2>
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>Assignment Name</th>
+                    
+                </tr>
+                <%# for(let i = 0; i < 4; i++){ %>
+                    <%# if(assignment.length < 2){ %>
+                        <tr>
+                            <td> Please click view more to see all assignments</td>
+                        </tr>
+                    <%# break } %>
+                    <tr>
+                        <td> <%# assignment[i] %> </td>
+                        
+                    </tr>                    
+                <%# }; %>
+                <tr>
+                    <td>...</td>
+                    
+                </tr>
+
+            </table>
+            <a href="/submissionList" class="btn btn-info float-right">View More</a> <br> -->
+
+            <!-- <table class="table table-striped table-hover">
+                <tr>
+                    <th>Name</th>
+                    <th>Number</th>
+                    <th>Enrolled Students</th>
+                    <th>Credits</th>
+                    <th>Department</th>
+                </tr>
+                <tr>
+                    <td>Intro to Poetry</td>
+                    <td>112</td>
+                    <td>24</td>
+                    <td>3</td>
+                    <td>English</td>
+                </tr>
+                <tr>
+                    <td>Intro to Biology</td>
+                    <td>160</td>
+                    <td>30</td>
+                    <td>4</td>
+                    <td>Biology</td>
+                </tr>
+                <tr>
+                    <td>Precalculus</td>
+                    <td>122</td>
+                    <td>25</td>
+                    <td>4</td>
+                    <td>Mathematics</td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+            </table> -->
+            
+
 
             <!-- <h2>Instructors Preview</h2>
             <table class="table table-hover table-striped">
@@ -123,46 +253,7 @@
                 </tr>
             </table>
             <a href="studentsDB.html" class="btn btn-info float-right">View More</a> <br> -->
-            <!-- Preview of the Courses Data Base. -->
-            <!-- <h2>Courses Preview</h2>
-            <table class="table table-striped table-hover">
-                <tr>
-                    <th>Name</th>
-                    <th>Number</th>
-                    <th>Enrolled Students</th>
-                    <th>Credits</th>
-                    <th>Department</th>
-                </tr>
-                <tr>
-                    <td>Intro to Poetry</td>
-                    <td>112</td>
-                    <td>24</td>
-                    <td>3</td>
-                    <td>English</td>
-                </tr>
-                <tr>
-                    <td>Intro to Biology</td>
-                    <td>160</td>
-                    <td>30</td>
-                    <td>4</td>
-                    <td>Biology</td>
-                </tr>
-                <tr>
-                    <td>Precalculus</td>
-                    <td>122</td>
-                    <td>25</td>
-                    <td>4</td>
-                    <td>Mathematics</td>
-                </tr>
-                <tr>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                    <td>...</td>
-                </tr>
-            </table>
-            <a href="coursesDB.html" class="btn btn-info float-right">View More</a> -->
+           
 
 
 
@@ -176,17 +267,6 @@
 
 <!--Added in the script function-->
     <%- include('../../partials/_scripts') %>
-    <!-- <script>
-      $(document).ready(function () {
-        $("#sidebarCollapse").on("click", function () {
-          $("#sidebar").toggleClass("active");
-          $(".logo").toggleClass("active");
-        });
-        $("#sidebarCollapse").on("click", function showImage() {
-          $(".logo").toggle();
-        });
-      });
-    </script> -->
 
   </body>
 </html>

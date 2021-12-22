@@ -368,12 +368,13 @@ app.get(
     Submission.find({ assignmentID: input })
       .then((result) => {
         console.log(result);
-        console.log(result[0].status);
-        if (result[0].status == "Submitted" || result[0].status == "Draft") {
+        if(result.length < 1){
+          res.render("pages/Instructor/assignmentXsubmissionsNone");
+        }else if (result[0].status == "Submitted" || result[0].status == "Draft") {
           res.render("pages/Instructor/assignmentXsubmissions", {
             submission: result,
           });
-        } else {
+        }else{
           res.render("pages/Instructor/assignmentXsubmissionsNone");
         }
       })

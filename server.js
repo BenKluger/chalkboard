@@ -94,7 +94,7 @@ app.get("/submissionList", requireAuth("admin"), function (req, res) {
     });
 });
 
-////////////Path for full Submission list
+////////////Path for full course list
 app.get("/courseList", requireAuth("admin"), function (req, res) {
   Course.find()
     .sort({ CourseName: 1 }) //, usertype: 1
@@ -111,7 +111,8 @@ app.get("/instructorHome", requireAuth("instructor"), function (req, res) {
   let userfullname = req.cookies.fullname;
   Course.find({ Instructors: userfullname })
     .then((result) => {
-      res.render("pages/Instructor/instructorHomePage", { courses: result });
+      res.render("pages/Instructor/instructorHomePage", { courses: result,
+      user: userfullname });
     })
     .catch((err) => {
       console.log(err);
@@ -231,6 +232,62 @@ app.post("/createAssign", async (req, res) => {
   }
   res.json({ status: "ok", url: "/assignmentsPage" });
 });
+//////////////////////////Submit Assignment Grade
+app.post("/submitGrade", (req, res) => {
+  const {
+    submissionID,
+    grade,
+    feedback
+  } = req.body;
+  try {
+    Submission.updateOne(
+    { submissionID: submissionID },
+    {
+      grade: grade,
+      feedback: feedback
+    },
+      function (err, result) {
+        if (err) {
+          res.send(err);
+        } else {
+          console.log("Grade updated successfully: ", result);
+        }
+      }
+    );
+  } 
+  catch (error) {
+    console.log(error);
+  }
+  res.json({ status: "ok", url: "/assignmentsPage" });
+})
+app.post("/allowResubmit", (req, res) => {
+  const {
+    submissionID,
+    status
+  } = req.body;
+  try {
+    Submission.updateOne(
+    { submissionID: submissionID },
+    {
+      status: status
+    },
+      function (err, result) {
+        if (err) {
+          res.send(err);
+        } else {
+          console.log("Resubmission enabled successfully: ", result);
+        }
+      }
+    );
+  } 
+  catch (error) {
+    console.log(error);
+  }
+  res.json({ status: "ok"});
+})
+
+
+
 
 /////////////////////////View Submissions
 
@@ -292,7 +349,7 @@ app.get(
       .then((result) => {
         console.log(result);
         console.log(result[0].status);
-        if (result[0].status == "Submitted") {
+        if (result[0].status == "Submitted" || result[0].status == "Draft") {
           res.render("pages/Instructor/assignmentXsubmissions", {
             submission: result,
           });
@@ -343,26 +400,6 @@ app.get("/assignXpage/:assign", requireAuth("instructor"), function (req, res) {
       console.log(err);
     });
 });
-// app.get("/assignXpage/:assign", requireAuth('instructor'), function (req, res){
-//   let input = req.params.assign;
-//   // let course = req.cookies.courseid;
-//   console.log('input', input)
-
-//   Course.findOne({'assignments.assignmentId': input}, {_id: 0, assignments: {$elemMatch: { assignmentId: '1'}}, CourseNum: 1, assignments: 1})
-//     .then((result) => {
-//       console.log(result)
-//       const results = result.assignments.find(function(post, index) {
-//         if(post.assignmentId == input)
-//           return post[index];
-//       });
-//       // result.find
-//       console.log(results)
-//       res.render("pages/Instructor/assignmentXpage", { assign: results });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
 //////////////// Course Description Page for all available courses
 app.post("/coursedetailsIN", (req, res) => {
   const { CourseID } = req.body;
@@ -629,13 +666,18 @@ app.get(
 app.get("/studentHome", requireAuth("student"), function (req, res) {
   let userfullname = req.cookies.fullname;
   Course.find({ Students: userfullname })
-    .then((result) => {
-      res.render("pages/Student/studentHomePage", { courses: result });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  .then((result) => {
+    const courseResult = result;
+    res.render("pages/Student/studentHomePage", {
+        courses: courseResult,
+        user: userfullname,
+      })
+  })
+  .catch((err) => {
+    console.log(err);
+  });;
 });
+
 ///////////////////////////// OTHER ROUTES
 //Log in / Register pages
 app.get("/login", function (req, res) {

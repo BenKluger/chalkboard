@@ -12,14 +12,16 @@
             <%- include('../../partials/_top-nav') %>
                 <h2 class="assignName"><%= assignment.assignments[index].assignmentName %></h2>
                 <h3 class="text-center"><%= submission.username %>'s Submission</h3>
-                <a href="/assignmentsPageST"><i class="fas fa-undo-alt"></i> All Assignments</a>
+                <a href="/assignmentsPage"><i class="fas fa-undo-alt"></i> All Assignments</a>
                 <br>
                 <div class="form-inline col-xs-2">
                     <label>Grade: </label>
-                    <input class="form-control col-xs-2" type="number" min="0" max="100" placeholder="Grade">
+                    <input class="form-control col-xs-2" type="number" min="0" max="100" id="grade"  placeholder="<%= submission.grade %>">
                 </div>
                 <label>Instructor Feedback:</label>
-                <textarea name="" id="" cols="30" rows="3" class="form-control"></textarea>
+                <textarea cols="30" rows="3" class="form-control" id="feedback"><%= submission.feedback %> </textarea>
+                <button class="btn btn-info" onclick="submitGrade()" id="<%= submission.submissionID %>">Submit Grade/Feedback</button>
+                <button class="btn btn-info" onclick="allowResubmit()" id="<%= submission.submissionID %>s">Allow Resubmit</button>
                 <!-- <input class="form-control" type="text"> -->
                 
                 <form action="">
@@ -43,6 +45,51 @@
 
     </div>
     <%- include('../../partials/_scripts') %>
+    <script>
+        async function submitGrade(){
+          event.preventDefault();
+          const submissionID = event.srcElement.id;
+          const grade = document.getElementById('grade').value;
+          const feedback = document.getElementById('feedback').value;
+          const result = await fetch('/submitGrade', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              submissionID,
+              grade,
+              feedback
+            })
+          }).then((res) => res.json())
+            if(result.error){
+              alert(result.error);
+            }
+            alert('The grade and feedback has been submitted')
+            window.location.href = result.url;
+        }
+        async function allowResubmit(){
+          event.preventDefault();
+          const submissionIDbefore = event.srcElement.id;
+          const submissionID = submissionIDbefore.slice(0, -1)
+          const status = 'Draft';
+          const result = await fetch('/allowResubmit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              submissionID,
+              status
+            })
+          }).then((res) => res.json())
+            if(result.error){
+              alert(result.error);
+            }
+            alert('The student submission has been re-enabled')
+            // window.location.href = result.url;
+        }
+    </script>
     
   </body>
 </html>

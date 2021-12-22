@@ -19,6 +19,7 @@
                 <form method="post"  class="inline" id="pickedCourse">
                     <tr>
                         <th>Student Name</th>
+                        <th>Assignment Status</th>
                     </tr>
                   <% submission.forEach(function(submissionx){ %>
                     <tr>
@@ -27,6 +28,7 @@
                           <%= submissionx.username %>
                         </button>
                       </td>
+                      <td><%= submissionx.status %> </td>
                     </tr>
                   <% }); %>
                 </form>

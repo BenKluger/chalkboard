@@ -48,5 +48,26 @@
     </div>
     <%- include('../../partials/_scripts') %>
     
+    
+    <script>
+    async function selectedCourse(){
+          event.preventDefault();
+          const CourseID = event.srcElement.id;
+         console.log(CourseID)
+          const result = await fetch('/coursedetailsST', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              CourseID
+            })
+          }).then((res) => res.json())
+            if(result.error){
+              alert(result.error);
+            }
+            window.location.href = result.url;
+        }
+    </script>
   </body>
 </html>

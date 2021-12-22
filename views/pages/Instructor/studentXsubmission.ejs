@@ -30,7 +30,10 @@
                             <div class="line"></div>
                             <h5>Question <%= [i+1] %></h5>
                             <div>Q: <%= assignment.assignments[index].questions[i] %></div>
-                            <input readonly type="text" name="answer" class="form-control answer" placeholder="Your Answer" value="<%= submission.answers[i] %> ">
+                            <div>Correct Answer: <%= assignment.assignments[index].answers[i] %></div>
+                            <input readonly type="text" name="answer" class="form-control answer <%=i%> " value="<%= submission.answers[i] %> ">
+                            <button class="btn btn-info" type="button" onclick="correct()" id= "<%=i%>c" >✔️</button>
+                            <button class="btn btn-info" type="button" onclick="wrong()" id="<%=i%>w">❌</button>
                         <% }; %> 
                     </div>
                     <div class="line"></div>
@@ -46,6 +49,29 @@
     </div>
     <%- include('../../partials/_scripts') %>
     <script>
+        const answerFeedback = [];
+        function correct(){
+          const indexx = event.srcElement.id
+          const index = indexx.slice(0, -1);
+          if(answerFeedback[index]==null){
+            answerFeedback.push("✔️")
+          }else{
+            answerFeedback.splice(index, 0, "✔️");
+          }
+          const input = document.getElementsByClassName(index);
+          input[0].style.borderColor = 'green';
+        }
+        function wrong(){
+          const indexx = event.srcElement.id
+          const index = indexx.slice(0, -1);
+          if(answerFeedback[index]==null){
+            answerFeedback.push("❌")
+          }else{
+            answerFeedback.splice(index, 0, "❌");
+          }
+          const input = document.getElementsByClassName(index);
+          input[0].style.borderColor = 'red';
+        }
         async function submitGrade(){
           event.preventDefault();
           const submissionID = event.srcElement.id;
@@ -59,7 +85,8 @@
             body: JSON.stringify({
               submissionID,
               grade,
-              feedback
+              feedback,
+              answerFeedback
             })
           }).then((res) => res.json())
             if(result.error){

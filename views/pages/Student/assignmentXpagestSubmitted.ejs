@@ -20,6 +20,7 @@
                         <% for(let i = 0; i < assign.assignments[0].questions.length; i++){ %>
                             <div class="line"></div>
                             <h5>Question <%= [i+1] %></h5>
+                            <h4><%= submit.answerFeedback[i] %> </h4>
                             <div>Q: <%= assign.assignments[0].questions[i] %></div>
                             <input readonly type="text" name="answer" class="form-control answer" placeholder="Your Answer" value="<%= submit.answers[i] %> ">
                         <% }; %> 

@@ -254,14 +254,17 @@ app.post("/submitGrade", (req, res) => {
   const {
     submissionID,
     grade,
-    feedback
+    feedback,
+    answerFeedback
   } = req.body;
+  console.log('feedback array',answerFeedback)
   try {
     Submission.updateOne(
     { submissionID: submissionID },
     {
       grade: grade,
-      feedback: feedback
+      feedback: feedback,
+      answerFeedback: answerFeedback
     },
       function (err, result) {
         if (err) {

@@ -22,6 +22,8 @@
                             <input type="text" name="answer" class="form-control answer" placeholder="Your Answer" value="<%= submit.answers[i] %> ">
                         <% }; %> 
                     </div>
+                    <br>
+                    <input type="file" class="btn btn-info">
                     <div class="line"></div>
                     <button class="btn btn-info" onclick="saveAnswers()" id="<%=assign.assignments[0].assignmentId%>">Save Draft</button>
                     <button class="btn btn-info" onclick="submitAnswers()" id="<%=assign.assignments[0].assignmentId%>">Submit</button>

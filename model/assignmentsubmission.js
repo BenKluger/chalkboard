@@ -22,6 +22,9 @@ const submissionSchema = new mongoose.Schema(
         answers: {
             type: [String],
         },
+        answerFeedback:{
+            type: [String],
+        },
         status: {
             type: String
         },

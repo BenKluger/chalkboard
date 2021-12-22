@@ -119,16 +119,33 @@ app.get("/instructorHome", requireAuth("instructor"), function (req, res) {
     });
 });
 
-app.get("/availCoursesIN", requireAuth("instructor"), function (req, res) {
-  Course.find()
-    .sort({ CourseNum: 1 })
-    .then((result) => {
-      res.render("pages/Instructor/availCoursesIN", { courses: result });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+app.get("/availCoursesIN", requireAuth('instructor'), function(req, res){
+  var noMatch = null;
+  if(req.query.search) {
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      // Course.find({CourseNum: regex}, function(err, allCourses){
+      Course.find({$or:[{CourseNum: regex}, {CourseName: regex}]}, function(err, allCourses){
+         if(err){
+             console.log(err);
+         } else {
+            if(allCourses.length < 1) {
+                noMatch = "No courses match that query, please try again.";
+            }
+            res.render("pages/Instructor/availCoursesIN",{courses: allCourses, noMatch: noMatch});
+         }
+      });
+  } else {
+      // Get all campgrounds from DB
+      Course.find({}, function(err, allCourses){
+         if(err){
+             console.log(err);
+         } else {
+            res.render("pages/Instructor/availCoursesIN",{courses: allCourses, noMatch: noMatch});
+         }
+      });
+  }
 });
+
 
 app.post("/updateEnrollmentAccept", async (req, res) => {
   const { studentName } = req.body;
@@ -630,45 +647,36 @@ app.post("/enrollCourse", async (req, res) => {
   res.json({ status: "ok", url: "/availCoursesST" });
 });
 
-// app.get("/availCoursesST", requireAuth('student'), function(req, res){
-//   var noMatch = null;
-//   const { search } = req.body;
-//   if(search) {
-//       const regex = new RegExp(escapeRegex(search), 'gi');
-//       Course.find({CourseNum: regex}, function(err, allCourses){
-//          if(err){
-//              console.log(err);
-//          } else {
-//             if(allCourses.length < 1) {
-//                 noMatch = "No courses match that query, please try again.";
-//             }
-//             res.render("pages/Student/availCoursesST",{campgrounds:allCourses, noMatch: noMatch});
-//          }
-//       });
-//   } else {
-//       // Get all campgrounds from DB
-//       Course.find({}, function(err, allCourse){
-//          if(err){
-//              console.log(err);
-//          } else {
-//             res.render("pages/Student/availCoursesST",{campgrounds:allCourses, noMatch: noMatch});
-//          }
-//       });
-//   }
-// });
-
-app.get("/availCoursesST", requireAuth("student"), function (req, res) {
-  Course.find()
-    .sort({ CourseNum: 1 })
-    .then((result) => {
-      res.render("pages/Student/availCoursesST", { courses: result });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+app.get("/availCoursesST", requireAuth('student'), function(req, res){
+  var noMatch = null;
+  if(req.query.search) {
+      const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+      // Course.find({CourseNum: regex}, function(err, allCourses){
+      Course.find({$or:[{CourseNum: regex}, {CourseName: regex}]}, function(err, allCourses){
+         if(err){
+             console.log(err);
+         } else {
+            if(allCourses.length < 1) {
+                noMatch = "No courses match that query, please try again.";
+            }
+            res.render("pages/Student/availCoursesST",{courses: allCourses, noMatch: noMatch});
+         }
+      });
+  } else {
+      // Get all campgrounds from DB
+      Course.find({}, function(err, allCourses){
+         if(err){
+             console.log(err);
+         } else {
+            res.render("pages/Student/availCoursesST",{courses: allCourses, noMatch: noMatch});
+         }
+      });
+  }
 });
 
-
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 app.post("/coursedetailsST", (req, res) => {
   const { CourseID } = req.body;
@@ -833,7 +841,7 @@ app.post("/newCourse", async (req, res) => {
     CourseMaterials,
     Instructors,
   } = req.body;
-
+  console.log("reached post request")
   var CourseID = Date.now();
   try {
     const response = await Course.create({

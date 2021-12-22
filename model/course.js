@@ -5,8 +5,7 @@ const assignmentSchema = new mongoose.Schema(
     {
         assignmentId: {
             type: String,
-            required: true,
-            unique: true
+            required: true
         },
         assignmentName: {
             type: String,

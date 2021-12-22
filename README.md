@@ -24,8 +24,13 @@ https://chalkboard-amnaben.herokuapp.com/
   - Only specific user types can access that user type's pages (e.g. student accounts can only access student pages when logged in)
 
 - Technologies used:
-  - Frontend: HTML, Bootstrap, Javascript
-  - Backend: MongoDB, Node.js, Mongoose, Express
+  - Frontend: HTML, Bootstrap, Javascript, ejs
+  - Backend: Node.js, Mongoose, Express, bcyrpt, ejs, cookie-parser,jsonwebtoken, nodemon
+  - Database: MongoDB
+
+- Team Members: (A mixture of screensharing and private work was utilized, with Amna taking the lead on screensharing much of the backend Node.js)
+  - Amna
+  - Ben
 
 
 ### Index Pages
@@ -38,9 +43,17 @@ https://chalkboard-amnaben.herokuapp.com/
 
 ### Admin Section
 - View all created users and their information (not including passwords)
-- General functionality (accessed within dummy pages - this will be accessible in a future deliverable)
-  - Ability to view more detailed information for instructors and students than in the users tab
-  - Ability to view all available courses
+
+![image](https://user-images.githubusercontent.com/69221395/147026483-3e58c0f7-eed1-4578-82a2-0ffae7f143ae.png)
+
+- Ability to view all available course information
+
+![image](https://user-images.githubusercontent.com/69221395/147026553-84da0fb8-c921-4e5e-a272-c912e69b85f1.png)
+
+- Ability to view all student submissions
+
+![image](https://user-images.githubusercontent.com/69221395/147026619-ce78df23-b50d-4cdb-bf3d-2ba650b8a319.png)
+
 
 
 ### Student Section
@@ -61,7 +74,9 @@ https://chalkboard-amnaben.herokuapp.com/
 - Ability to submit/save drafts of assignments
 ![image](https://user-images.githubusercontent.com/69221395/146999013-4ab53f6f-13d7-4a1a-b287-e57cb0a0a327.png)
 
-- Ability to view grades
+- Ability to view grades and professor feedback
+
+![image](https://user-images.githubusercontent.com/69221395/147026807-42350112-fd4a-4da6-85a8-d0678e39871f.png)
 
 
 - Ability to search for a course within the available courses
@@ -88,18 +103,17 @@ https://chalkboard-amnaben.herokuapp.com/
 ![image](https://user-images.githubusercontent.com/69221395/146999350-33aea074-5e9a-46cb-a7e6-c71752b030b7.png)
 
 
-
 - Ability to accept or reject new students who have signed up for the instructor's course
 ![image](https://user-images.githubusercontent.com/69221395/146998897-2559d4f1-2480-4b64-8651-50c054c4874f.png)
 ![image](https://user-images.githubusercontent.com/69221395/146998910-9807f5a6-2933-4e0e-84dd-94391c959e26.png)
 
 
+- Ability to grade submitted assignments, as well as allow resubmission
+
+![image](https://user-images.githubusercontent.com/69221395/147027298-8783ef39-a33d-4c6d-9d6e-70e70a4850e5.png)
 
 
-
-- General functionality (accessed within dummy pages - this will be accessible in a future deliverable)
-  - Ability to grade submitted assignments, as well as allow resubmission
-  - Ability to search for a course within the available courses
+- Ability to search for a course within the available courses
 
 
 
